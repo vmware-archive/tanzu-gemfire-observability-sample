@@ -1,0 +1,765 @@
+{
+  "name": "GemFire Operator Dashboard",
+  "url": "GemFire-Operator",
+  "description": "GemFire Operator Dashboard",
+  "eventFilterType": "BYCHART",
+  "displayDescription": false,
+  "displaySectionTableOfContents": true,
+  "displayQueryParameters": true,
+  "sections": [
+    {
+      "name": "GemFire Summary",
+      "rows": [
+        {
+          "charts": [
+            {
+              "anomalySeverity": "medium",
+              "chartSettings": {
+                "y1ScaleSIBy1024": false,
+                "fixedLegendEnabled": false,
+                "fixedLegendFilterField": "CURRENT",
+                "y0ScaleSIBy1024": false,
+                "sparklineDisplayFontSize": "100",
+                "fixedLegendFilterLimit": 5,
+                "max": 100,
+                "fixedLegendPosition": "RIGHT",
+                "customTags": [],
+                "showRawValues": false,
+                "lineType": "linear",
+                "showHosts": true,
+                "sparklineValueColorMapApplyTo": "TEXT",
+                "groupBySource": false,
+                "windowing": "full",
+                "min": 0,
+                "sparklineSize": "BACKGROUND",
+                "fixedLegendFilterSort": "TOP",
+                "y1Units": "",
+                "sortValuesDescending": true,
+                "sparklineDisplayValueType": "VALUE",
+                "type": "top-k",
+                "y1UnitAutoscaling": false,
+                "showLabels": true,
+                "sparklineValueTextMapText": [
+                  "new highest"
+                ],
+                "tagMode": "all",
+                "fixedLegendUseRawStats": false,
+                "y0UnitAutoscaling": false,
+                "fixedLegendDisplayStats": [
+                  "CURRENT"
+                ],
+                "sparklineDisplayHorizontalPosition": "MIDDLE",
+                "autoColumnTags": false,
+                "numTags": 4,
+                "defaultSortColumn": null,
+                "sparklineDisplayColor": null,
+                "sparklineLineColor": null,
+                "sparklineFillColor": null
+              },
+              "displayConfidenceBounds": false,
+              "includeObsoleteMetrics": false,
+              "filterOutNonAnomalies": false,
+              "name": "Heap Utilization",
+              "anomalySampleSize": "8",
+              "units": "%",
+              "summarization": "SUM",
+              "base": 0,
+              "chartAttributes": {
+                "dashboardLinks": {
+                  "*": {
+                    "destination": "/dashboards/GemFire-Developer-Dashboard-1-2",
+                    "tags": {
+                      "cluster_name": "cluster",
+                      "gemfire_cluster": "label.geode-cluster",
+                      "namespace": "namespace"
+                    }
+                  }
+                },
+                "decimalPrecision": 0,
+                "topK": {
+                  "labelBy": [
+                    "cluster",
+                    "namespace",
+                    "label.geode-cluster",
+                    "member",
+                    "id"
+                  ],
+                  "labelHeader": "GemFire Member",
+                  "valueHeader": "Memory %"
+                },
+                "colorMap": {
+                  "colors": [
+                    "#86c042",
+                    "#EFC006",
+                    "#d9534f"
+                  ],
+                  "values": [
+                    85,
+                    95
+                  ]
+                },
+                "singleStat": {
+                  "commaDelimited": false,
+                  "sparklineDisplayLabel": "A",
+                  "sparklineDisplaySubLabel": "GemFire Clusters"
+                },
+                "dashboardLayout": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 12,
+                  "h": 4
+                },
+                "y0ScaleDecimal": true
+              },
+              "sources": [
+                {
+                  "name": "Servers",
+                  "query": "ts(geode.usedMemory.gauge, instance=vmHeapMemoryStats and ${cluster_filter})/ts(geode.maxMemory.gauge, instance=vmHeapMemoryStats and ${cluster_filter})*100",
+                  "querybuilderEnabled": false,
+                  "secondaryAxis": false,
+                  "disabled": false
+                }
+              ],
+              "noDefaultEvents": false,
+              "description": "This chart shows GemFire's internal heap utilization percentage of the given member(s).",
+              "anomalyType": "both"
+            }
+          ],
+          "heightFactor": 80
+        },
+        {
+          "charts": [
+            {
+              "anomalySeverity": "medium",
+              "chartSettings": {
+                "y1ScaleSIBy1024": false,
+                "fixedLegendEnabled": false,
+                "fixedLegendFilterField": "CURRENT",
+                "y0ScaleSIBy1024": false,
+                "sparklineDisplayFontSize": "100",
+                "fixedLegendFilterLimit": 5,
+                "fixedLegendPosition": "RIGHT",
+                "customTags": [],
+                "lineType": "linear",
+                "sparklineValueColorMapApplyTo": "TEXT",
+                "windowing": "full",
+                "sparklineSize": "BACKGROUND",
+                "fixedLegendFilterSort": "TOP",
+                "y1Units": "",
+                "sortValuesDescending": true,
+                "sparklineDisplayValueType": "VALUE",
+                "type": "top-k",
+                "y1UnitAutoscaling": false,
+                "sparklineValueTextMapText": [
+                  "new highest"
+                ],
+                "tagMode": "all",
+                "fixedLegendUseRawStats": false,
+                "y0UnitAutoscaling": false,
+                "fixedLegendDisplayStats": [
+                  "CURRENT"
+                ],
+                "sparklineDisplayHorizontalPosition": "MIDDLE",
+                "autoColumnTags": false,
+                "numTags": 4,
+                "defaultSortColumn": null,
+                "sparklineDisplayColor": null,
+                "sparklineLineColor": null,
+                "sparklineFillColor": null
+              },
+              "displayConfidenceBounds": false,
+              "includeObsoleteMetrics": false,
+              "filterOutNonAnomalies": false,
+              "name": "CPU Utlization",
+              "anomalySampleSize": "8",
+              "units": "%",
+              "summarization": "LAST",
+              "base": 0,
+              "chartAttributes": {
+                "dashboardLinks": {
+                  "*": {
+                    "destination": "/dashboards/GemFire-Developer-Dashboard-1-2",
+                    "tags": {
+                      "cluster_name": "cluster",
+                      "gemfire_cluster": "label.geode-cluster",
+                      "namespace": "namespace"
+                    }
+                  }
+                },
+                "decimalPrecision": 0,
+                "topK": {
+                  "labelBy": [
+                    "cluster",
+                    "namespace",
+                    "label.geode-cluster",
+                    "member"
+                  ],
+                  "labelHeader": "GemFire Member",
+                  "valueHeader": "CPU %"
+                },
+                "colorMap": {
+                  "colors": [
+                    "#86c042",
+                    "#EFC006",
+                    "#d9534f"
+                  ],
+                  "values": [
+                    85,
+                    95
+                  ]
+                },
+                "singleStat": {
+                  "commaDelimited": false,
+                  "sparklineDisplayLabel": "A",
+                  "sparklineDisplaySubLabel": "GemFire Clusters"
+                },
+                "dashboardLayout": {
+                  "x": 0,
+                  "y": 4,
+                  "w": 12,
+                  "h": 4
+                },
+                "y0ScaleDecimal": true
+              },
+              "sources": [
+                {
+                  "name": "CPU Active",
+                  "query": "ts(geode.cpuActive.gauge, ${cluster_filter})",
+                  "querybuilderEnabled": false,
+                  "secondaryAxis": false,
+                  "disabled": false
+                }
+              ],
+              "noDefaultEvents": false,
+              "description": "This chart shows GemFire's internal CPU active percentage for every member across the selected cluster(s).\n\nIssue(s): A CPU % that is in the 85%+ range for longer than 5 minutes is likely indicative of an overloaded/overcommited member.\n\nAction(s):\n- Consider scaling out/up\n- Consider any recent changes to the cluster",
+              "anomalyType": "both"
+            }
+          ],
+          "heightFactor": 80
+        },
+        {
+          "charts": [
+            {
+              "anomalySeverity": "medium",
+              "chartSettings": {
+                "y1ScaleSIBy1024": false,
+                "fixedLegendEnabled": false,
+                "fixedLegendFilterField": "CURRENT",
+                "y0ScaleSIBy1024": false,
+                "sparklineDisplayFontSize": "100",
+                "fixedLegendFilterLimit": 5,
+                "max": 100,
+                "fixedLegendPosition": "RIGHT",
+                "customTags": [],
+                "showRawValues": false,
+                "lineType": "linear",
+                "showHosts": true,
+                "sparklineValueColorMapApplyTo": "TEXT",
+                "groupBySource": false,
+                "windowing": "full",
+                "min": 0,
+                "sparklineSize": "BACKGROUND",
+                "fixedLegendFilterSort": "TOP",
+                "y1Units": "",
+                "sortValuesDescending": true,
+                "sparklineDisplayValueType": "VALUE",
+                "type": "top-k",
+                "y1UnitAutoscaling": false,
+                "showLabels": true,
+                "sparklineValueTextMapText": [
+                  "new highest"
+                ],
+                "tagMode": "all",
+                "fixedLegendUseRawStats": false,
+                "y0UnitAutoscaling": false,
+                "fixedLegendDisplayStats": [
+                  "CURRENT"
+                ],
+                "sparklineDisplayHorizontalPosition": "MIDDLE",
+                "autoColumnTags": false,
+                "numTags": 4,
+                "defaultSortColumn": null,
+                "sparklineDisplayColor": null,
+                "sparklineLineColor": null,
+                "sparklineFillColor": null
+              },
+              "displayConfidenceBounds": false,
+              "includeObsoleteMetrics": false,
+              "filterOutNonAnomalies": false,
+              "name": "Disk Utilization",
+              "anomalySampleSize": "8",
+              "units": "%",
+              "summarization": "LAST",
+              "base": 0,
+              "chartAttributes": {
+                "dashboardLinks": {
+                  "*": {
+                    "destination": "/dashboards/GemFire-Developer-Dashboard-1-2",
+                    "tags": {
+                      "cluster_name": "cluster",
+                      "gemfire_cluster": "label.geode-cluster",
+                      "namespace": "namespace"
+                    }
+                  }
+                },
+                "decimalPrecision": 0,
+                "topK": {
+                  "labelBy": [
+                    "cluster",
+                    "namespace",
+                    "label.geode-cluster",
+                    "member"
+                  ],
+                  "labelHeader": "GemFire Member",
+                  "valueHeader": "Disk Used %"
+                },
+                "colorMap": {
+                  "colors": [
+                    "#86c042",
+                    "#EFC006",
+                    "#d9534f"
+                  ],
+                  "values": [
+                    85,
+                    95
+                  ]
+                },
+                "singleStat": {
+                  "commaDelimited": false,
+                  "sparklineDisplayLabel": "A",
+                  "sparklineDisplaySubLabel": "GemFire Clusters"
+                },
+                "dashboardLayout": {
+                  "x": 0,
+                  "y": 8,
+                  "w": 12,
+                  "h": 4
+                },
+                "y0ScaleDecimal": true
+              },
+              "sources": [
+                {
+                  "name": "Utilized",
+                  "query": "(1 - ts(geode.volumeFreeSpace.gauge, ${cluster_filter}) / ts(geode.volumeSize.gauge, ${cluster_filter}) )*100",
+                  "querybuilderEnabled": false,
+                  "secondaryAxis": false,
+                  "disabled": false
+                }
+              ],
+              "noDefaultEvents": false,
+              "description": "This chart shows GemFire's internal hard disk utilization percentage for the given member(s).",
+              "anomalyType": "both"
+            }
+          ],
+          "heightFactor": 80
+        },
+        {
+          "charts": [
+            {
+              "anomalySeverity": "medium",
+              "chartSettings": {
+                "y1ScaleSIBy1024": false,
+                "fixedLegendEnabled": false,
+                "fixedLegendFilterField": "CURRENT",
+                "y0ScaleSIBy1024": true,
+                "sparklineDisplayFontSize": "100",
+                "fixedLegendFilterLimit": 5,
+                "fixedLegendPosition": "RIGHT",
+                "customTags": [],
+                "showRawValues": false,
+                "lineType": "linear",
+                "showHosts": true,
+                "sparklineValueColorMapApplyTo": "TEXT",
+                "groupBySource": false,
+                "windowing": "full",
+                "sparklineSize": "BACKGROUND",
+                "fixedLegendFilterSort": "TOP",
+                "y1Units": "",
+                "sortValuesDescending": true,
+                "sparklineDisplayValueType": "VALUE",
+                "type": "top-k",
+                "y1UnitAutoscaling": false,
+                "showLabels": true,
+                "sparklineValueTextMapText": [
+                  "new highest"
+                ],
+                "tagMode": "all",
+                "fixedLegendUseRawStats": false,
+                "y0UnitAutoscaling": true,
+                "fixedLegendDisplayStats": [
+                  "CURRENT"
+                ],
+                "sparklineDisplayHorizontalPosition": "MIDDLE",
+                "autoColumnTags": false,
+                "numTags": 4,
+                "defaultSortColumn": null,
+                "sparklineDisplayColor": null,
+                "sparklineLineColor": null,
+                "sparklineFillColor": null
+              },
+              "displayConfidenceBounds": false,
+              "includeObsoleteMetrics": false,
+              "filterOutNonAnomalies": false,
+              "name": "Kubernetes Network Utilization",
+              "anomalySampleSize": "8",
+              "units": "KiB",
+              "summarization": "LAST",
+              "base": 0,
+              "chartAttributes": {
+                "dashboardLinks": {
+                  "*": {
+                    "destination": "/dashboards/GemFire-Developer-Dashboard-1-2",
+                    "tags": {
+                      "cluster_name": "cluster",
+                      "gemfire_cluster": "label.geode-cluster",
+                      "namespace": "namespace"
+                    }
+                  }
+                },
+                "decimalPrecision": 0,
+                "topK": {
+                  "labelBy": [
+                    "cluster",
+                    "namespace_name",
+                    "label.geode-cluster",
+                    "pod_name",
+                    "source"
+                  ],
+                  "labelHeader": "Pod",
+                  "valueHeader": "TX/RX Rate"
+                },
+                "colorMap": {
+                  "colors": [],
+                  "values": []
+                },
+                "singleStat": {
+                  "commaDelimited": false,
+                  "sparklineDisplayLabel": "A",
+                  "sparklineDisplaySubLabel": "GemFire Clusters"
+                },
+                "dashboardLayout": {
+                  "x": 0,
+                  "y": 12,
+                  "w": 4,
+                  "h": 10
+                },
+                "y0ScaleDecimal": true
+              },
+              "sources": [
+                {
+                  "name": "TX",
+                  "query": "aliasSource(ts(kubernetes.pod.network.tx_rate, cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\"), \"TX Rate\")",
+                  "querybuilderEnabled": false,
+                  "secondaryAxis": false,
+                  "disabled": false
+                },
+                {
+                  "name": "RX",
+                  "query": "aliasSource(ts(kubernetes.pod.network.rx_rate, cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\"), \"RX Rate\")",
+                  "querybuilderEnabled": false,
+                  "secondaryAxis": false,
+                  "disabled": false
+                }
+              ],
+              "noDefaultEvents": false,
+              "description": "Network Utilization shows the rate of Transmitting (TX) and Receiving (RX) by Kubernetes POD. These are the actual bytes that are being sent across the network from one pod to another or outside of the cluster.\n\nIssue(s): Often times there is another component other than GemFire that could be causing issues on the Kubernetes Pod/Cluster. A very high rate of TX/RX or an extremely low rate could indicate an issue with a pod/cluster.\n\nAction(s): Investigate pods that are at the bottom and top of this list within the cluster specified.",
+              "anomalyType": "both"
+            },
+            {
+              "anomalySeverity": "medium",
+              "chartSettings": {
+                "y1ScaleSIBy1024": false,
+                "fixedLegendEnabled": false,
+                "fixedLegendFilterField": "CURRENT",
+                "y0ScaleSIBy1024": true,
+                "sparklineDisplayFontSize": "100",
+                "fixedLegendFilterLimit": 5,
+                "fixedLegendPosition": "RIGHT",
+                "customTags": [],
+                "showRawValues": false,
+                "lineType": "linear",
+                "showHosts": true,
+                "sparklineValueColorMapApplyTo": "TEXT",
+                "groupBySource": false,
+                "windowing": "full",
+                "sparklineSize": "BACKGROUND",
+                "fixedLegendFilterSort": "TOP",
+                "y1Units": "",
+                "sortValuesDescending": true,
+                "sparklineDisplayValueType": "VALUE",
+                "type": "top-k",
+                "y1UnitAutoscaling": false,
+                "showLabels": true,
+                "sparklineValueTextMapText": [
+                  "new highest"
+                ],
+                "tagMode": "all",
+                "fixedLegendUseRawStats": false,
+                "y0UnitAutoscaling": true,
+                "fixedLegendDisplayStats": [
+                  "CURRENT"
+                ],
+                "sparklineDisplayHorizontalPosition": "MIDDLE",
+                "autoColumnTags": false,
+                "numTags": 4,
+                "defaultSortColumn": null,
+                "sparklineDisplayColor": null,
+                "sparklineLineColor": null,
+                "sparklineFillColor": null
+              },
+              "displayConfidenceBounds": false,
+              "includeObsoleteMetrics": false,
+              "filterOutNonAnomalies": false,
+              "name": "GemFire Network Utilization",
+              "anomalySampleSize": "8",
+              "units": "KiB",
+              "summarization": "LAST",
+              "base": 0,
+              "chartAttributes": {
+                "dashboardLinks": {
+                  "*": {
+                    "destination": "/dashboards/GemFire-Developer-Dashboard-1-2",
+                    "tags": {
+                      "cluster_name": "cluster",
+                      "gemfire_cluster": "label.geode-cluster",
+                      "namespace": "namespace"
+                    }
+                  }
+                },
+                "decimalPrecision": 0,
+                "topK": {
+                  "labelBy": [
+                    "cluster",
+                    "namespace",
+                    "label.geode-cluster",
+                    "member",
+                    "namespace_name",
+                    "pod_name"
+                  ],
+                  "labelHeader": "Pod",
+                  "valueHeader": "TX Rate"
+                },
+                "colorMap": {
+                  "colors": [],
+                  "values": []
+                },
+                "singleStat": {
+                  "commaDelimited": false,
+                  "sparklineDisplayLabel": "A",
+                  "sparklineDisplaySubLabel": "GemFire Clusters"
+                },
+                "dashboardLayout": {
+                  "x": 4,
+                  "y": 12,
+                  "w": 4,
+                  "h": 10
+                },
+                "y0ScaleDecimal": true
+              },
+              "sources": [
+                {
+                  "name": "TX",
+                  "query": "ts(geode.recvBytes.gauge, ${cluster_filter})",
+                  "querybuilderEnabled": false,
+                  "secondaryAxis": false,
+                  "disabled": false
+                },
+                {
+                  "name": "RX",
+                  "query": "ts(geode.xmitBytes.gauge, ${cluster_filter})",
+                  "querybuilderEnabled": false,
+                  "secondaryAxis": false,
+                  "disabled": false
+                }
+              ],
+              "noDefaultEvents": false,
+              "description": "This chart shows the Transmitted (xmit) and Received (recv) bytes that each member in the given GemFire cluster is registering.",
+              "anomalyType": "both"
+            },
+            {
+              "anomalySeverity": "medium",
+              "chartSettings": {
+                "y1ScaleSIBy1024": false,
+                "fixedLegendEnabled": false,
+                "fixedLegendFilterField": "CURRENT",
+                "y0ScaleSIBy1024": false,
+                "sparklineDisplayFontSize": "100",
+                "fixedLegendFilterLimit": 5,
+                "max": 100,
+                "fixedLegendPosition": "RIGHT",
+                "customTags": [],
+                "showRawValues": false,
+                "lineType": "linear",
+                "showHosts": true,
+                "sparklineValueColorMapApplyTo": "TEXT",
+                "groupBySource": false,
+                "windowing": "full",
+                "min": 0,
+                "sparklineSize": "BACKGROUND",
+                "fixedLegendFilterSort": "TOP",
+                "y1Units": "",
+                "sortValuesDescending": true,
+                "sparklineDisplayValueType": "VALUE",
+                "type": "top-k",
+                "y1UnitAutoscaling": false,
+                "showLabels": true,
+                "sparklineValueTextMapText": [
+                  "new highest"
+                ],
+                "tagMode": "all",
+                "fixedLegendUseRawStats": false,
+                "y0UnitAutoscaling": false,
+                "fixedLegendDisplayStats": [
+                  "CURRENT"
+                ],
+                "sparklineDisplayHorizontalPosition": "MIDDLE",
+                "autoColumnTags": false,
+                "numTags": 4,
+                "defaultSortColumn": null,
+                "sparklineDisplayColor": null,
+                "sparklineLineColor": null,
+                "sparklineFillColor": null
+              },
+              "displayConfidenceBounds": false,
+              "includeObsoleteMetrics": false,
+              "filterOutNonAnomalies": false,
+              "name": "GemFire Function Completion %",
+              "anomalySampleSize": "8",
+              "units": "%",
+              "summarization": "LAST",
+              "base": 0,
+              "chartAttributes": {
+                "dashboardLinks": {
+                  "*": {
+                    "destination": "/dashboards/GemFire-Developer-Dashboard-1-2",
+                    "tags": {
+                      "cluster_name": "cluster",
+                      "gemfire_cluster": "label.geode-cluster",
+                      "namespace": "namespace"
+                    }
+                  }
+                },
+                "decimalPrecision": 0,
+                "topK": {
+                  "labelBy": [
+                    "cluster",
+                    "namespace",
+                    "label.geode-cluster",
+                    "member"
+                  ],
+                  "labelHeader": "GemFire Member",
+                  "valueHeader": "Completed %"
+                },
+                "colorMap": {
+                  "colors": [
+                    "#d9534f",
+                    "#EFC006",
+                    "#86c042"
+                  ],
+                  "values": [
+                    85,
+                    95
+                  ]
+                },
+                "singleStat": {
+                  "commaDelimited": false,
+                  "sparklineDisplayLabel": "A",
+                  "sparklineDisplaySubLabel": "GemFire Clusters"
+                },
+                "dashboardLayout": {
+                  "x": 8,
+                  "y": 12,
+                  "w": 4,
+                  "h": 10
+                },
+                "y0ScaleDecimal": true
+              },
+              "sources": [
+                {
+                  "name": "Utilized",
+                  "query": "ts(geode.functionExecutionsCompleted.gauge, member!=\"*locator*\" and instance!=\"*internal*\" and instance!=\"distributionStats\" and ${cluster_filter})/ts(geode.functionExecutionCalls.gauge, member!=\"*locator*\" and instance!=\"*internal*\" and instance!=\"distributionStats\" and ${cluster_filter})*100",
+                  "querybuilderEnabled": false,
+                  "secondaryAxis": false,
+                  "disabled": false
+                }
+              ],
+              "noDefaultEvents": false,
+              "description": "Custom FunctionExecutionsCompleted/FunctionExecutionCalls is providing a percentage of custom coded functions that run inside GemFire and whether or not they completed.\n\nIssue(s): High incompletion rate can indicate bad custom code, or potential problems with a specific server\n\nAction(s): Review any recently deployed function.jar files to the GemFire Servers.",
+              "anomalyType": "both"
+            }
+          ],
+          "heightFactor": 210
+        }
+      ]
+    }
+  ],
+  "parameterDetails": {
+    "namespace": {
+      "tagsBlackListRegex": "",
+      "parameterType": "DYNAMIC",
+      "tagKey": "namespace",
+      "queryValue": "ts(geode.broadcastMessages.gauge, cluster=\"${cluster_name}\")",
+      "order": 2,
+      "defaultValue": "Label",
+      "hideFromView": false,
+      "value": "*",
+      "label": "Kubernetes Namespace",
+      "dynamicFieldType": "TAG_KEY",
+      "valuesToReadableStrings": {
+        "Label": "*",
+        "Label_2": "default",
+        "Label_3": "geode-system"
+      },
+      "allowAll": true,
+      "selectedLabel": "Label"
+    },
+    "cluster_name": {
+      "tagsBlackListRegex": "",
+      "parameterType": "DYNAMIC",
+      "tagKey": "cluster",
+      "queryValue": "ts(geode.broadcastMessages.gauge, cluster?=\"*\")",
+      "order": 1,
+      "defaultValue": "Label",
+      "hideFromView": false,
+      "value": "*",
+      "label": "Kubernetes Cluster",
+      "dynamicFieldType": "TAG_KEY",
+      "valuesToReadableStrings": {
+        "Label": "*",
+        "Label_2": "gemfire-lrt",
+        "Label_3": "gemfire-nimba-test"
+      },
+      "allowAll": true,
+      "selectedLabel": "Label"
+    },
+    "cluster_filter": {
+      "parameterType": "SIMPLE",
+      "order": 4,
+      "defaultValue": "Label",
+      "hideFromView": true,
+      "label": "cluster_filter",
+      "valuesToReadableStrings": {
+        "Label": "cluster=\"${cluster_name}\" and namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\""
+      }
+    },
+    "gemfire_cluster": {
+      "tagsBlackListRegex": "",
+      "parameterType": "DYNAMIC",
+      "tagKey": "label.geode-cluster",
+      "queryValue": "ts(geode.broadcastMessages*,namespace=\"${namespace}\" and cluster=\"${cluster_name}\")",
+      "order": 3,
+      "defaultValue": "Label",
+      "hideFromView": false,
+      "value": "*",
+      "label": "gemfire_cluster",
+      "dynamicFieldType": "TAG_KEY",
+      "valuesToReadableStrings": {
+        "Label": "*",
+        "Label_2": "geodecluster-sample"
+      },
+      "allowAll": true,
+      "selectedLabel": "Label"
+    }
+  },
+  "forceV2UI": true
+}
