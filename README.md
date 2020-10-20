@@ -10,8 +10,9 @@ You may follow this guide by Wavefront to [edit and save a dashboard](https://do
 
 ### Prerequisites
 
-* A Wavefront account <your-company>.wavefront.com 
+* A Wavefront cluster e.g. `<your-company>.wavefront.com`, with corresponding API key
 * Wavefront Collectors + Proxy installed to your cluster
+* Gemfire-for-kubernetes
 
 ### Build & Run
 
