@@ -4,12 +4,14 @@
 ## Overview
 
 ## Try it out
+Create a new dashboard on Wavefront, and edit its json with the contents of your chosen dashboard (either [developer.json](/dashboards/developer.json) or [operator.json](/dashboards/operator.json))
+You may follow this guide by Wavefront to [edit and save a dashboard](https://docs.wavefront.com/ui_dashboards_v1.html#edit-and-save-a-dashboard). 
+
 
 ### Prerequisites
 
-* Prereq 1
-* Prereq 2
-* Prereq 3
+* A Wavefront account <your-company>.wavefront.com 
+* Wavefront Collectors + Proxy installed to your cluster
 
 ### Build & Run
 
