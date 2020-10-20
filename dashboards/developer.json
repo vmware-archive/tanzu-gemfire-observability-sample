@@ -1,6 +1,6 @@
 {
-  "name": "GemFire Developer Dashboard 1.2",
-  "url": "GemFire-Developer-Dashboard-1-2",
+  "name": "GemFire Developer Dashboard",
+  "url": "GemFire-Developer-Dashboard",
   "description": "GemFire Developer Dashboard",
   "eventFilterType": "BYCHART",
   "displayDescription": false,
@@ -82,11 +82,11 @@
               "sources": [
                 {
                   "name": "Uptime",
-                  "query": "if(exists(max(ts(geode.process.uptime.seconds.gauge, ${cluster_filter}))), max(ts(geode.process.uptime.seconds.gauge, ${cluster_filter})),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(max(ts(gemfire.process.uptime.seconds.gauge, ${cluster_filter}))), max(ts(gemfire.process.uptime.seconds.gauge, ${cluster_filter})),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -162,19 +162,19 @@
               "sources": [
                 {
                   "name": "Server Count",
-                  "query": "if(exists(max(ts(geode.servers.gauge, ${cluster_filter}))), max(ts(geode.servers.gauge, ${cluster_filter})),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(max(ts(gemfire.servers.gauge, ${cluster_filter}))), max(ts(gemfire.servers.gauge, ${cluster_filter})),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "A",
-                  "query": "ts(geode.servers.gauge, ${cluster_filter})",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.servers.gauge, ${cluster_filter})",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -250,19 +250,19 @@
               "sources": [
                 {
                   "name": "Locator Count",
-                  "query": "max(ts(geode.locators.gauge, ${cluster_filter}))",
-                  "querybuilderEnabled": false,
+                  "query": "max(ts(gemfire.locators.gauge, ${cluster_filter}))",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "Locator Count Clone",
-                  "query": "if(exists(count(ts(geode.locators.gauge, ${cluster_filter}))), count(ts(geode.locators.gauge, ${cluster_filter})),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(count(ts(gemfire.locators.gauge, ${cluster_filter}))), count(ts(gemfire.locators.gauge, ${cluster_filter})),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -338,19 +338,19 @@
               "sources": [
                 {
                   "name": "A",
-                  "query": "ts(geode.regions.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.regions.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "B",
-                  "query": "if(exists(max(ts(geode.regions.gauge, instance=\"cachePerfStats\" and ${cluster_filter}))), max(ts(geode.regions.gauge, instance=\"cachePerfStats\" and ${cluster_filter})),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(max(ts(gemfire.regions.gauge, instance=\"cachePerfStats\" and ${cluster_filter}))), max(ts(gemfire.regions.gauge, instance=\"cachePerfStats\" and ${cluster_filter})),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -427,18 +427,18 @@
                 {
                   "name": "K8s Core Count",
                   "query": "sum(ts(kubernetes.node.cpu.limit, cluster=${cluster_name}))/1000",
-                  "querybuilderEnabled": false,
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "GemFire CPU count",
-                  "query": "if(exists(sum(ts(geode.cpus.gauge, category=\"VMStats\" and ${cluster_filter}))), sum(ts(geode.cpus.gauge, category=\"VMStats\" and ${cluster_filter})),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(sum(ts(gemfire.cpus.gauge, category=\"VMStats\" and ${cluster_filter}))), sum(ts(gemfire.cpus.gauge, category=\"VMStats\" and ${cluster_filter})),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -521,17 +521,17 @@
               "sources": [
                 {
                   "name": "D",
-                  "query": "sum(ts(geode.cache.entries.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and source=\"*latest*\") without (sourcetags, \"source\", member, \"_host\", pod, \"label.statefulset.kubernetes.io/pod-name\"))",
-                  "querybuilderEnabled": false,
+                  "query": "sum(ts(gemfire.cache.entries.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and source=\"*latest*\") without (sourcetags, \"source\", member, \"_host\", pod, \"label.statefulset.kubernetes.io/pod-name\"))",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "disabled": true
+                  "querybuilderEnabled": false
                 },
                 {
                   "name": "B Clone",
-                  "query": "if(exists(rawsum(ts(geode.cache.entries.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"))), rawsum(ts(geode.cache.entries.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")), 0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(rawsum(ts(gemfire.cache.entries.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"))), rawsum(ts(gemfire.cache.entries.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")), 0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "disabled": false
+                  "querybuilderEnabled": false
                 }
               ],
               "noDefaultEvents": false,
@@ -622,27 +622,27 @@
               "sources": [
                 {
                   "name": "Used %",
-                  "query": "aliasMetric(if(exists(ts(geode.jvm.memory.used.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\" and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter})*100/ts(geode.jvm.memory.max.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\" and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter})), ts(geode.jvm.memory.used.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\" and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter})*100/ts(geode.jvm.memory.max.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\" and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter}),0),\" %Used\")",
-                  "querybuilderEnabled": false,
+                  "query": "aliasMetric(if(exists(ts(gemfire.jvm.memory.used.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\" and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter})*100/ts(gemfire.jvm.memory.max.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\" and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter})), ts(gemfire.jvm.memory.used.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\" and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter})*100/ts(gemfire.jvm.memory.max.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\" and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter}),0),\" %Used\")",
+                  "disabled": false,
                   "secondaryAxis": true,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "Max",
-                  "query": "aliasMetric(if(exists(ts(geode.jvm.memory.max.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\"and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter})), ts(geode.jvm.memory.max.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\"and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter}), 0), \"Total\")",
-                  "querybuilderEnabled": false,
+                  "query": "aliasMetric(if(exists(ts(gemfire.jvm.memory.max.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\"and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter})), ts(gemfire.jvm.memory.max.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\"and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter}), 0), \"Total\")",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "Used",
-                  "query": "aliasMetric(if(exists(ts(geode.jvm.memory.used.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\" and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter})), ts(geode.jvm.memory.used.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\" and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter}), 0), \" Used\")",
-                  "querybuilderEnabled": false,
+                  "query": "aliasMetric(if(exists(ts(gemfire.jvm.memory.used.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\" and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter})), ts(gemfire.jvm.memory.used.bytes.gauge, area=\"heap\" and member.type!=\"locator\" and member_type!=\"locator\" and id!=\"Par Eden Space\" and id!=\"Par Survivor Space\" and ${cluster_filter}), 0), \" Used\")",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -721,31 +721,31 @@
               "sources": [
                 {
                   "name": "Used%",
-                  "query": "aliasMetric((1 - ts(geode.volumeFreeSpace.gauge, instance=\"*DEFAULT*\" and ${cluster_filter}) / ts(geode.volumeSize.gauge, instance=\"*DEFAULT*\" and ${cluster_filter}) )*100, \"%Used\")",
-                  "querybuilderEnabled": false,
+                  "query": "aliasMetric((1 - ts(gemfire.volumeFreeSpace.gauge, instance=\"*DEFAULT*\" and ${cluster_filter}) / ts(gemfire.volumeSize.gauge, instance=\"*DEFAULT*\" and ${cluster_filter}) )*100, \"%Used\")",
+                  "disabled": false,
                   "secondaryAxis": true,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "Free Space",
-                  "query": "aliasMetric(ts(geode.volumeFreeSpace.gauge, instance=\"*DEFAULT*\" and ${cluster_filter}),\"Free\")",
-                  "querybuilderEnabled": false,
+                  "query": "aliasMetric(ts(gemfire.volumeFreeSpace.gauge, instance=\"*DEFAULT*\" and ${cluster_filter}),\"Free\")",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "Total Space",
-                  "query": "aliasMetric(ts(geode.volumeSize.gauge, instance=\"*DEFAULT*\" and ${cluster_filter}), \"Total\")",
-                  "querybuilderEnabled": false,
+                  "query": "aliasMetric(ts(gemfire.volumeSize.gauge, instance=\"*DEFAULT*\" and ${cluster_filter}), \"Total\")",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
-              "description": "Disk utilization by Member in the Cluster.\n\nIssue: Disks are needed for proper operation/restoration of a cluster, logging, and persisted data either from overflow or persistent regions. There may be a degradation of service or possible disruption if disks on any member get full.\n\nAction(s): \n- Modify logs to a rolling scheme\n- Consider modifying persistent data or overflow triggers\n- Consider adding a new member, scaling horizontally\n- Consider increasing the default storage capacity of members, scaling vertically",
+              "description": "Disk utilization by Member in the Cluster, the percentage remaining is computed utilizing the statistics gathered by Gemfire, volumeFreeSpace and volumeSize.\n\nIssue: Disks are needed for proper operation/restoration of a cluster, logging, and persisted data either from overflow or persistent regions. There may be a degradation of service or possible data loss if disks on any member get full.\n\nAction(s): \n- Evaluate log size and consider a change to a rolling scheme if not already in place\n- Consider modifying persistent data or overflow triggers\n- Consider adding a new member, scaling horizontally\n- Consider increasing the default storage capacity of members, scaling vertically",
               "anomalyType": "both"
             }
           ],
@@ -815,10 +815,10 @@
               "sources": [
                 {
                   "name": "CPU % Active",
-                  "query": "if(exists(ts(geode.cpuActive.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" )), ts(geode.cpuActive.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" ),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(ts(gemfire.cpuActive.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" )), ts(gemfire.cpuActive.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" ),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "disabled": false
+                  "querybuilderEnabled": false
                 }
               ],
               "noDefaultEvents": false,
@@ -895,11 +895,11 @@
               "sources": [
                 {
                   "name": "Clients Connected",
-                  "query": "aliasMetric(if(exists(ts(geode.currentClientConnections.gauge,namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")), ts(geode.currentClientConnections.gauge,namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"),0), \"Connected Clients\")",
-                  "querybuilderEnabled": false,
+                  "query": "aliasMetric(if(exists(ts(gemfire.currentClientConnections.gauge,namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")), ts(gemfire.currentClientConnections.gauge,namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"),0), \"Connected Clients\")",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -959,20 +959,20 @@
               "sources": [
                 {
                   "name": "Delay Duration",
-                  "query": "if(exists(ts(geode.delayDuration.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")),ts(geode.delayDuration.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(ts(gemfire.delayDuration.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")),ts(gemfire.delayDuration.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "Sample Time",
-                  "query": " if(exists(ts(geode.sampleTime.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")), ts(geode.sampleTime.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"),0)",
-                  "querybuilderEnabled": false,
+                  "query": " if(exists(ts(gemfire.sampleTime.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")), ts(gemfire.sampleTime.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"),0)",
+                  "disabled": true,
                   "secondaryAxis": true,
+                  "querybuilderEnabled": false,
                   "sourceDescription": "",
-                  "sourceColor": "rgba(63,31,222,1)",
-                  "disabled": true
+                  "sourceColor": "rgba(63,31,222,1)"
                 }
               ],
               "noDefaultEvents": false,
@@ -1041,11 +1041,11 @@
               "sources": [
                 {
                   "name": "A",
-                  "query": "ts(geode.replyWaitsInProgress.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.replyWaitsInProgress.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -1105,11 +1105,11 @@
               "sources": [
                 {
                   "name": "A",
-                  "query": "if(exists(ts(geode.iowait.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")), ts(geode.iowait.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(ts(gemfire.iowait.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")), ts(gemfire.iowait.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -1164,11 +1164,11 @@
               "sources": [
                 {
                   "name": "Abandoned Reads",
-                  "query": "if(exists(ts(geode.abandonedReadRequests.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")),ts(geode.abandonedReadRequests.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(ts(gemfire.abandonedReadRequests.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")),ts(gemfire.abandonedReadRequests.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -1233,21 +1233,21 @@
               "sources": [
                 {
                   "name": "All Gets (system and client)",
-                  "query": "sum(rate(ts(geode.gets.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")))",
-                  "querybuilderEnabled": false,
+                  "query": "sum(rate(ts(gemfire.gets.gauge, ${cluster_filter})))",
+                  "disabled": false,
                   "secondaryAxis": false,
+                  "querybuilderEnabled": false,
                   "sourceDescription": "",
-                  "sourceColor": "rgba(56,160,244,1)",
-                  "disabled": false
+                  "sourceColor": "rgba(56,160,244,1)"
                 },
                 {
                   "name": "Client Gets Rate",
-                  "query": "sum(rate(ts(geode.getRequests.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")))",
-                  "querybuilderEnabled": false,
+                  "query": "sum(rate(ts(gemfire.getRequests.gauge, ${cluster_filter})))",
+                  "disabled": false,
                   "secondaryAxis": true,
+                  "querybuilderEnabled": false,
                   "sourceDescription": "",
-                  "sourceColor": "rgba(217,83,79,1)",
-                  "disabled": false
+                  "sourceColor": "rgba(217,83,79,1)"
                 }
               ],
               "noDefaultEvents": false,
@@ -1289,130 +1289,44 @@
               "name": "Avg. Get Latency",
               "anomalySampleSize": "8",
               "units": "ns",
-              "summarization": "MEAN",
+              "summarization": "LAST",
               "base": 0,
               "chartAttributes": {
                 "dashboardLayout": {
                   "x": 4,
                   "y": 0,
-                  "w": 3,
+                  "w": 4,
                   "h": 4
                 }
               },
               "sources": [
                 {
                   "name": "Get (Avg. Latency)",
-                  "query": "if(exists(sum(ts(geode.getTime.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category !=\"PartitionedRegionStats\"))/sum(ts(geode.gets.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\"))), sum(ts(geode.getTime.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category !=\"PartitionedRegionStats\"))/sum(ts(geode.gets.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(sum(ts(gemfire.getTime.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category !=\"PartitionedRegionStats\"))/sum(ts(gemfire.gets.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\"))), sum(ts(gemfire.getTime.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category !=\"PartitionedRegionStats\"))/sum(ts(gemfire.gets.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "B",
-                  "query": "ts(geode.getTime.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category !=\"PartitionedRegionStats\")",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.getTime.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category !=\"PartitionedRegionStats\")",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "C",
-                  "query": "ts(geode.gets.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.gets.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
               "description": "Average Get Latency presents the total time taken by all 'get' operations performed across the cluster divided by the number of all 'get' operations performed across the cluster to get an average time taken per 'get' operation in the system.",
-              "anomalyType": "both"
-            },
-            {
-              "anomalySeverity": "medium",
-              "chartSettings": {
-                "y1ScaleSIBy1024": false,
-                "fixedLegendEnabled": false,
-                "fixedLegendFilterField": "CURRENT",
-                "y0ScaleSIBy1024": false,
-                "sparklineDisplayFontSize": "200",
-                "fixedLegendFilterLimit": 5,
-                "sparklineValueColorMapColors": [
-                  "rgba(217,83,79,0.8)",
-                  "rgba(73,175,217,1)"
-                ],
-                "fixedLegendPosition": "RIGHT",
-                "customTags": [],
-                "showRawValues": false,
-                "lineType": "linear",
-                "showHosts": true,
-                "sparklineFillColor": "rgba(0,0,0,0.2)",
-                "sparklineValueColorMapApplyTo": "BACKGROUND",
-                "groupBySource": false,
-                "windowing": "full",
-                "sparklineDisplayColor": "rgba(255,255,255,1)",
-                "sparklineSize": "BOTTOM",
-                "fixedLegendFilterSort": "TOP",
-                "sparklineValueColorMapValuesV2": [
-                  50
-                ],
-                "y1Units": "",
-                "sparklineValueTextMapThresholds": [],
-                "sortValuesDescending": true,
-                "sparklineDisplayValueType": "VALUE",
-                "type": "sparkline",
-                "y1UnitAutoscaling": false,
-                "showLabels": true,
-                "sparklineValueTextMapText": [
-                  "new highest"
-                ],
-                "tagMode": "all",
-                "fixedLegendUseRawStats": false,
-                "y0UnitAutoscaling": true,
-                "fixedLegendDisplayStats": [
-                  "CURRENT"
-                ],
-                "sparklineDisplayHorizontalPosition": "MIDDLE",
-                "sparklineLineColor": "rgba(0,0,0,0.3)",
-                "sparklineDecimalPrecision": 0,
-                "autoColumnTags": false,
-                "numTags": 4,
-                "defaultSortColumn": null
-              },
-              "displayConfidenceBounds": false,
-              "includeObsoleteMetrics": false,
-              "filterOutNonAnomalies": false,
-              "name": "Cache Hit Ratio",
-              "anomalySampleSize": "8",
-              "units": "%",
-              "summarization": "LAST",
-              "base": 0,
-              "chartAttributes": {
-                "singleStat": {
-                  "sparklineDisplayLabel": "Hit Ratio",
-                  "sparklineDisplaySubLabel": "Cache Hit Ratio"
-                },
-                "dashboardLayout": {
-                  "x": 7,
-                  "y": 0,
-                  "w": 1,
-                  "h": 4
-                },
-                "y0ScaleDecimal": false
-              },
-              "sources": [
-                {
-                  "name": "Hit Ratio",
-                  "query": "if(exists((sum(filter(ts(geode.gets.gauge), namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) - sum(filter(ts(geode.misses.gauge), namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) ) /sum(filter(ts(geode.gets.gauge), namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) *100),(sum(filter(ts(geode.gets.gauge), namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) - sum(filter(ts(geode.misses.gauge), namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) ) /sum(filter(ts(geode.gets.gauge), namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) *100,0)",
-                  "querybuilderEnabled": false,
-                  "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
-                }
-              ],
-              "noDefaultEvents": false,
-              "description": "The Cache hit ratio is currently based on system gets, any get operation across the cluster and presents the percentage of those gets that return a value based on the specified key.",
               "anomalyType": "both"
             },
             {
@@ -1496,24 +1410,27 @@
               "sources": [
                 {
                   "name": "Hits Per Second",
-                  "query": "if(exists(sum(rate(ts(geode.gets.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) - sum(rate(ts(geode.misses.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\"))))),sum(rate(ts(geode.gets.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\"))) - sum(rate(ts(geode.misses.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\"))),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(sum(rate(ts(gemfire.gets.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) - sum(rate(ts(gemfire.misses.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\"))))),sum(rate(ts(gemfire.gets.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\"))) - sum(rate(ts(gemfire.misses.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\"))),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "A",
-                  "query": "ts(geode.gets.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.gets.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "B",
-                  "query": "ts(geode.getRequests.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.getRequests.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -1591,17 +1508,19 @@
               "sources": [
                 {
                   "name": "Misses",
-                  "query": "if(exists(sum(rate(ts(geode.misses.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")))), sum(rate(ts(geode.misses.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\"))),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(sum(rate(ts(gemfire.misses.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")))), sum(rate(ts(gemfire.misses.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\"))),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "A",
-                  "query": "ts(geode.misses.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.misses.gauge, ${cluster_filter})",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -1661,62 +1580,22 @@
               },
               "sources": [
                 {
-                  "name": "B",
-                  "query": "sum(ts(geode.putTime.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category!=\"PartitionedRegionStats\"))/sum(ts(geode.puts.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\"))",
-                  "querybuilderEnabled": false,
-                  "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
-                },
-                {
-                  "name": "C",
-                  "query": "ts(geode.puts.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")",
-                  "querybuilderEnabled": false,
-                  "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
-                },
-                {
-                  "name": "D",
-                  "query": "ts(geode.putTime.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category!=\"PartitionedRegionStats\")",
-                  "querybuilderEnabled": false,
-                  "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
-                },
-                {
-                  "name": "A",
-                  "query": "rate(ts(geode.putsCompleted.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"))",
-                  "querybuilderEnabled": false,
-                  "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
-                },
-                {
-                  "name": "Total",
-                  "query": "sum(rate(ts(geode.putsCompleted.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")))",
-                  "querybuilderEnabled": false,
-                  "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
-                },
-                {
                   "name": "All Puts (system and client)",
-                  "query": "sum(rate(ts(geode.puts.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")))",
-                  "querybuilderEnabled": false,
+                  "query": "sum(rate(ts(gemfire.puts.gauge, ${cluster_filter})))",
+                  "disabled": false,
                   "secondaryAxis": false,
+                  "querybuilderEnabled": false,
                   "sourceDescription": "",
-                  "sourceColor": "rgba(56,160,244,1)",
-                  "disabled": false
+                  "sourceColor": "rgba(56,160,244,1)"
                 },
                 {
                   "name": "Client Puts",
-                  "query": "sum(rate(ts(geode.putRequests.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")))",
-                  "querybuilderEnabled": false,
+                  "query": "sum(rate(ts(gemfire.putRequests.gauge, ${cluster_filter})))",
+                  "disabled": false,
                   "secondaryAxis": true,
+                  "querybuilderEnabled": false,
                   "sourceDescription": "",
-                  "sourceColor": "rgba(217,83,79,1)",
-                  "disabled": false
+                  "sourceColor": "rgba(217,83,79,1)"
                 }
               ],
               "noDefaultEvents": false,
@@ -1764,34 +1643,34 @@
                 "dashboardLayout": {
                   "x": 4,
                   "y": 4,
-                  "w": 3,
+                  "w": 4,
                   "h": 4
                 }
               },
               "sources": [
                 {
                   "name": "Put (Avg. Latency)",
-                  "query": "if(exists(sum(ts(geode.putTime.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category!=\"PartitionedRegionStats\"))/sum(ts(geode.puts.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\"))), sum(ts(geode.putTime.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category!=\"PartitionedRegionStats\"))/sum(ts(geode.puts.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(sum(ts(gemfire.putTime.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category!=\"PartitionedRegionStats\"))/sum(ts(gemfire.puts.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\"))), sum(ts(gemfire.putTime.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category!=\"PartitionedRegionStats\"))/sum(ts(gemfire.puts.gauge, ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "C",
-                  "query": "ts(geode.puts.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.puts.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "D",
-                  "query": "ts(geode.putTime.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category!=\"PartitionedRegionStats\")",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.putTime.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\" and category!=\"PartitionedRegionStats\")",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -1805,78 +1684,164 @@
                 "fixedLegendEnabled": false,
                 "fixedLegendFilterField": "CURRENT",
                 "y0ScaleSIBy1024": false,
-                "sparklineDisplayFontSize": "100",
-                "stackType": "expand",
+                "sparklineDisplayFontSize": "200",
                 "fixedLegendFilterLimit": 5,
-                "fixedLegendPosition": "RIGHT",
-                "customTags": [
-                  "member"
+                "sparklineValueColorMapColors": [
+                  "rgba(217,83,79,0.8)",
+                  "rgba(73,175,217,1)"
                 ],
+                "fixedLegendPosition": "RIGHT",
+                "customTags": [],
                 "showRawValues": false,
                 "lineType": "linear",
-                "showHosts": false,
-                "sparklineValueColorMapApplyTo": "TEXT",
-                "groupBySource": true,
+                "showHosts": true,
+                "sparklineFillColor": "rgba(0,0,0,0.2)",
+                "sparklineValueColorMapApplyTo": "BACKGROUND",
+                "groupBySource": false,
                 "windowing": "full",
-                "sparklineSize": "BACKGROUND",
+                "sparklineDisplayColor": "rgba(255,255,255,1)",
+                "sparklineSize": "BOTTOM",
                 "fixedLegendFilterSort": "TOP",
+                "sparklineValueColorMapValuesV2": [
+                  50
+                ],
                 "y1Units": "",
+                "sparklineValueTextMapThresholds": [],
                 "sortValuesDescending": true,
                 "sparklineDisplayValueType": "VALUE",
-                "type": "line",
+                "type": "sparkline",
                 "y1UnitAutoscaling": false,
                 "showLabels": true,
                 "sparklineValueTextMapText": [
                   "new highest"
                 ],
-                "tagMode": "custom",
+                "tagMode": "all",
                 "fixedLegendUseRawStats": false,
-                "y0UnitAutoscaling": false,
+                "y0UnitAutoscaling": true,
                 "fixedLegendDisplayStats": [
                   "CURRENT"
                 ],
                 "sparklineDisplayHorizontalPosition": "MIDDLE",
+                "sparklineLineColor": "rgba(0,0,0,0.3)",
                 "sparklineDecimalPrecision": 0,
                 "autoColumnTags": false,
                 "numTags": 4,
-                "defaultSortColumn": null,
-                "sparklineDisplayColor": null,
-                "sparklineLineColor": null,
-                "sparklineFillColor": null
+                "defaultSortColumn": null
               },
               "displayConfidenceBounds": false,
               "includeObsoleteMetrics": false,
               "filterOutNonAnomalies": false,
-              "name": "Client Put Requests by server",
+              "name": "Cache Hit Ratio",
               "anomalySampleSize": "8",
-              "units": "# of requests",
+              "units": "%",
               "summarization": "LAST",
               "base": 0,
               "chartAttributes": {
                 "singleStat": {
-                  "sparklineDisplayLabel": "A",
-                  "sparklineDisplaySubLabel": "Total Entries"
+                  "sparklineDisplayLabel": "Hit Ratio",
+                  "sparklineDisplaySubLabel": "Cache Hit Ratio"
                 },
                 "dashboardLayout": {
-                  "x": 7,
+                  "x": 8,
                   "y": 4,
-                  "w": 5,
+                  "w": 2,
                   "h": 4
                 },
                 "y0ScaleDecimal": false
               },
               "sources": [
                 {
-                  "name": "Client Put Requests",
-                  "query": "aliasMetric(ts(geode.putRequests.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\"), \"Put Requests\")",
-                  "querybuilderEnabled": false,
+                  "name": "Hit Ratio",
+                  "query": "if(exists((sum(filter(ts(gemfire.gets.gauge), ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) - sum(filter(ts(gemfire.misses.gauge), ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) ) /sum(filter(ts(gemfire.gets.gauge), ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) *100),(sum(filter(ts(gemfire.gets.gauge), ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) - sum(filter(ts(gemfire.misses.gauge), ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) ) /sum(filter(ts(gemfire.gets.gauge), ${cluster_filter} and instance!=\"cachePerfStats\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"RegionStats-partitionMetaData\")) *100,0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
-              "noDefaultEvents": true,
-              "description": "For each Server member, this chart represents the number of requests received for a put operation on that specific member.",
+              "noDefaultEvents": false,
+              "description": "The Cache hit ratio is currently based on system gets, any get operation across the cluster and presents the percentage of those gets that return a value based on the specified key.",
+              "anomalyType": "both"
+            },
+            {
+              "anomalySeverity": "medium",
+              "chartSettings": {
+                "y1ScaleSIBy1024": false,
+                "fixedLegendEnabled": false,
+                "fixedLegendFilterField": "CURRENT",
+                "y0ScaleSIBy1024": false,
+                "sparklineDisplayFontSize": "200",
+                "fixedLegendFilterLimit": 5,
+                "sparklineValueColorMapColors": [
+                  "rgba(73,175,217,1)",
+                  "rgba(255,224,61,0.5)",
+                  "rgba(217,83,79,0.5)"
+                ],
+                "fixedLegendPosition": "RIGHT",
+                "customTags": [],
+                "lineType": "linear",
+                "sparklineFillColor": "rgba(0,0,0,0.2)",
+                "sparklineValueColorMapApplyTo": "BACKGROUND",
+                "windowing": "full",
+                "sparklineDisplayColor": "rgba(255,255,255,1)",
+                "sparklineSize": "BACKGROUND",
+                "fixedLegendFilterSort": "TOP",
+                "sparklineValueColorMapValuesV2": [
+                  3,
+                  10
+                ],
+                "y1Units": "",
+                "sparklineDisplayValueType": "VALUE",
+                "type": "sparkline",
+                "y1UnitAutoscaling": false,
+                "sparklineValueTextMapText": [
+                  "new highest"
+                ],
+                "tagMode": "all",
+                "fixedLegendUseRawStats": false,
+                "y0UnitAutoscaling": false,
+                "fixedLegendDisplayStats": [
+                  "CURRENT"
+                ],
+                "sparklineDisplayHorizontalPosition": "MIDDLE",
+                "sparklineLineColor": "rgba(0,0,0,0.3)",
+                "sparklineDecimalPrecision": 1,
+                "autoColumnTags": false,
+                "numTags": 4,
+                "defaultSortColumn": null
+              },
+              "displayConfidenceBounds": false,
+              "includeObsoleteMetrics": false,
+              "filterOutNonAnomalies": false,
+              "name": "CPU Steal Time",
+              "anomalySampleSize": "8",
+              "units": "%",
+              "summarization": "MEAN",
+              "base": 0,
+              "chartAttributes": {
+                "singleStat": {
+                  "sparklineDisplayLabel": "A",
+                  "sparklineDisplaySubLabel": "Steal Time"
+                },
+                "dashboardLayout": {
+                  "x": 10,
+                  "y": 4,
+                  "w": 2,
+                  "h": 4
+                },
+                "y0ScaleDecimal": false
+              },
+              "sources": [
+                {
+                  "name": "B",
+                  "query": "if(exists(sum(ts(gemfire.cpuSteal.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")/100)), sum(ts(gemfire.cpuSteal.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")/100), 0)",
+                  "disabled": false,
+                  "secondaryAxis": false,
+                  "querybuilderEnabled": false
+                }
+              ],
+              "noDefaultEvents": false,
+              "description": "Steal time is the percentage of time a virtual CPU waits for a real CPU while the hypervisor is servicing another virtual processor. Your virtual machine (VM) shares resources with other instances on a single host in a virtualized environment. One of the resources it shares is CPU Cycles.\n\nIssue(s): A large amount of Steal time typically indicates that your underlying infrastructure is not properly handling Virtual machines, if this number is larger than the number of CPU cores, you are overcommitting CPU\n\nSuggested action(s): Consider a different IAAS provider for GemFire to run more efficiently",
               "anomalyType": "both"
             }
           ],
@@ -1951,19 +1916,19 @@
               "sources": [
                 {
                   "name": "REPLICATE",
-                  "query": "aliasMetric(if(exists(ts(geode.cache.entries.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"RegionStats-partitionMetaData\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"cachePerfStats\" and data.policy!=\"*PARTITION*\" and data_policy!=\"*PARTITION*\" and member!=\"*locator-0\" and member.type!=\"locator\")),ts(geode.cache.entries.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"RegionStats-partitionMetaData\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"cachePerfStats\" and data.policy!=\"*PARTITION*\" and data_policy!=\"*PARTITION*\" and member!=\"*locator-0\" and member.type!=\"locator\"),0) , \"Entries\")",
-                  "querybuilderEnabled": false,
+                  "query": "aliasMetric(if(exists(ts(gemfire.cache.entries.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"RegionStats-partitionMetaData\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"cachePerfStats\" and data.policy!=\"*PARTITION*\" and data_policy!=\"*PARTITION*\" and member!=\"*locator-0\" and member.type!=\"locator\")),ts(gemfire.cache.entries.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"RegionStats-partitionMetaData\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"cachePerfStats\" and data.policy!=\"*PARTITION*\" and data_policy!=\"*PARTITION*\" and member!=\"*locator-0\" and member.type!=\"locator\"),0) , \"Entries\")",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "PARTITIONED",
-                  "query": "aliasMetric(if(exists(rawsum(ts(geode.cache.entries.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"RegionStats-partitionMetaData\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"cachePerfStats\" and data.policy!=\"*REPLICATE*\" and data_policy!=\"*REPLICATE*\" and member!=\"*locator-0\" and member.type!=\"locator\"), region)), rawsum(ts(geode.cache.entries.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"RegionStats-partitionMetaData\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"cachePerfStats\" and data.policy!=\"*REPLICATE*\" and data_policy!=\"*REPLICATE*\" and member!=\"*locator-0\" and member.type!=\"locator\"), region),0), \"Entries\")",
-                  "querybuilderEnabled": false,
+                  "query": "aliasMetric(if(exists(rawsum(ts(gemfire.cache.entries.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"RegionStats-partitionMetaData\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"cachePerfStats\" and data.policy!=\"*REPLICATE*\" and data_policy!=\"*REPLICATE*\" and member!=\"*locator-0\" and member.type!=\"locator\"), region)), rawsum(ts(gemfire.cache.entries.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"RegionStats-partitionMetaData\" and instance!=\"RegionStats-managementRegionStats\" and instance!=\"cachePerfStats\" and data.policy!=\"*REPLICATE*\" and data_policy!=\"*REPLICATE*\" and member!=\"*locator-0\" and member.type!=\"locator\"), region),0), \"Entries\")",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -2052,7 +2017,7 @@
                 "dashboardLayout": {
                   "x": 0,
                   "y": 12,
-                  "w": 6,
+                  "w": 4,
                   "h": 5
                 },
                 "y0ScaleDecimal": true
@@ -2060,30 +2025,30 @@
               "sources": [
                 {
                   "name": "Uncompleted Execution Avg.",
-                  "query": "if(exists(sum(ts(geode.functionExecutionCalls.gauge, label.geode-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and instance!=\"*internal*\" and instance!=\"FunctionExecution\" and instance!=\"distributionStats\" and member!=\"*locator*\"))),sum(ts(geode.functionExecutionCalls.gauge, label.geode-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and instance!=\"*internal*\" and instance!=\"FunctionExecution\" and instance!=\"distributionStats\" and member!=\"*locator*\")),0)-if(exists(sum(ts(geode.functionExecutionsCompleted.gauge, label.geode-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and instance!=\"*internal*\" and instance!=\"FunctionExecution\" and instance!=\"distributionStats\" and member!=\"*locator*\"))), sum(ts(geode.functionExecutionsCompleted.gauge, label.geode-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and instance!=\"*internal*\" and instance!=\"FunctionExecution\" and instance!=\"distributionStats\" and member!=\"*locator*\")),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(sum(ts(gemfire.functionExecutionCalls.gauge, label.gemfire-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and instance!=\"*internal*\" and instance!=\"FunctionExecution\" and instance!=\"distributionStats\" and member!=\"*locator*\"))),sum(ts(gemfire.functionExecutionCalls.gauge, label.gemfire-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and instance!=\"*internal*\" and instance!=\"FunctionExecution\" and instance!=\"distributionStats\" and member!=\"*locator*\")),0)-if(exists(sum(ts(gemfire.functionExecutionsCompleted.gauge, label.gemfire-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and instance!=\"*internal*\" and instance!=\"FunctionExecution\" and instance!=\"distributionStats\" and member!=\"*locator*\"))), sum(ts(gemfire.functionExecutionsCompleted.gauge, label.gemfire-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and instance!=\"*internal*\" and instance!=\"FunctionExecution\" and instance!=\"distributionStats\" and member!=\"*locator*\")),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
+                  "querybuilderEnabled": false,
                   "sourceDescription": "",
-                  "sourceColor": "rgba(56,160,244,1)",
-                  "disabled": false
+                  "sourceColor": "rgba(56,160,244,1)"
                 },
                 {
                   "name": "Failed executions Clone",
-                  "query": "if(exists(sum(ts(geode.functionExecutionsCompleted.gauge, label.geode-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and instance!=\"*internal*\" and instance!=\"FunctionExecution\" and instance!=\"distributionStats\" and member!=\"*locator*\"))), sum(ts(geode.functionExecutionsCompleted.gauge, label.geode-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and instance!=\"*internal*\" and instance!=\"FunctionExecution\" and instance!=\"distributionStats\" and member!=\"*locator*\")),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(sum(ts(gemfire.functionExecutionsCompleted.gauge, label.gemfire-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and instance!=\"*internal*\" and instance!=\"FunctionExecution\" and instance!=\"distributionStats\" and member!=\"*locator*\"))), sum(ts(gemfire.functionExecutionsCompleted.gauge, label.gemfire-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and instance!=\"*internal*\" and instance!=\"FunctionExecution\" and instance!=\"distributionStats\" and member!=\"*locator*\")),0)",
+                  "disabled": true,
                   "secondaryAxis": false,
+                  "querybuilderEnabled": false,
                   "sourceDescription": "",
-                  "sourceColor": "rgba(56,160,244,1)",
-                  "disabled": true
+                  "sourceColor": "rgba(56,160,244,1)"
                 },
                 {
                   "name": "Function Queue",
-                  "query": "if(exists(sum(ts(geode.functionExecutionQueueSize.gauge, label.geode-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and member!=\"*locator*\"))),sum(ts(geode.functionExecutionQueueSize.gauge, label.geode-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and member!=\"*locator*\")),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(sum(ts(gemfire.functionExecutionQueueSize.gauge, label.gemfire-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and member!=\"*locator*\"))),sum(ts(gemfire.functionExecutionQueueSize.gauge, label.gemfire-cluster=\"${gemfire_cluster}\" and namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and member!=\"*locator*\")),0)",
+                  "disabled": false,
                   "secondaryAxis": true,
+                  "querybuilderEnabled": false,
                   "sourceDescription": "",
-                  "sourceColor": "rgba(217,83,79,1)",
-                  "disabled": false
+                  "sourceColor": "rgba(217,83,79,1)"
                 }
               ],
               "noDefaultEvents": false,
@@ -2096,78 +2061,78 @@
                 "fixedLegendEnabled": false,
                 "fixedLegendFilterField": "CURRENT",
                 "y0ScaleSIBy1024": false,
-                "sparklineDisplayFontSize": "200",
+                "sparklineDisplayFontSize": "100",
+                "stackType": "expand",
                 "fixedLegendFilterLimit": 5,
-                "sparklineValueColorMapColors": [
-                  "rgba(73,175,217,1)",
-                  "rgba(255,224,61,0.5)",
-                  "rgba(217,83,79,0.5)"
-                ],
                 "fixedLegendPosition": "RIGHT",
-                "customTags": [],
+                "customTags": [
+                  "member"
+                ],
+                "showRawValues": false,
                 "lineType": "linear",
-                "sparklineFillColor": "rgba(0,0,0,0.2)",
-                "sparklineValueColorMapApplyTo": "BACKGROUND",
+                "showHosts": false,
+                "sparklineValueColorMapApplyTo": "TEXT",
+                "groupBySource": true,
                 "windowing": "full",
-                "sparklineDisplayColor": "rgba(255,255,255,1)",
                 "sparklineSize": "BACKGROUND",
                 "fixedLegendFilterSort": "TOP",
-                "sparklineValueColorMapValuesV2": [
-                  3,
-                  10
-                ],
                 "y1Units": "",
+                "sortValuesDescending": true,
                 "sparklineDisplayValueType": "VALUE",
-                "type": "sparkline",
+                "type": "line",
                 "y1UnitAutoscaling": false,
+                "showLabels": true,
                 "sparklineValueTextMapText": [
                   "new highest"
                 ],
-                "tagMode": "all",
+                "tagMode": "custom",
                 "fixedLegendUseRawStats": false,
                 "y0UnitAutoscaling": false,
                 "fixedLegendDisplayStats": [
                   "CURRENT"
                 ],
                 "sparklineDisplayHorizontalPosition": "MIDDLE",
-                "sparklineLineColor": "rgba(0,0,0,0.3)",
-                "sparklineDecimalPrecision": 1,
+                "sparklineDecimalPrecision": 0,
                 "autoColumnTags": false,
                 "numTags": 4,
-                "defaultSortColumn": null
+                "defaultSortColumn": null,
+                "sparklineDisplayColor": null,
+                "sparklineLineColor": null,
+                "sparklineFillColor": null
               },
               "displayConfidenceBounds": false,
               "includeObsoleteMetrics": false,
               "filterOutNonAnomalies": false,
-              "name": "CPU Steal Time",
+              "name": "Client Put Request Rate by server",
               "anomalySampleSize": "8",
-              "units": "%",
-              "summarization": "MEAN",
+              "units": "request / second",
+              "summarization": "LAST",
               "base": 0,
               "chartAttributes": {
                 "singleStat": {
                   "sparklineDisplayLabel": "A",
-                  "sparklineDisplaySubLabel": "Steal Time"
+                  "sparklineDisplaySubLabel": "Total Entries"
                 },
                 "dashboardLayout": {
-                  "x": 6,
+                  "x": 4,
                   "y": 12,
-                  "w": 1,
+                  "w": 4,
                   "h": 5
                 },
                 "y0ScaleDecimal": false
               },
               "sources": [
                 {
-                  "name": "B",
-                  "query": "if(exists(sum(ts(geode.cpuSteal.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")/100)), sum(ts(geode.cpuSteal.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")/100), 0)",
-                  "querybuilderEnabled": false,
+                  "name": "Client Put Request Rate",
+                  "query": "aliasMetric(rate(ts(gemfire.putRequests.gauge, ${cluster_filter})), \"Put Requests\")",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
-              "noDefaultEvents": false,
-              "description": "Steal time is the percentage of time a virtual CPU waits for a real CPU while the hypervisor is servicing another virtual processor. Your virtual machine (VM) shares resources with other instances on a single host in a virtualized environment. One of the resources it shares is CPU Cycles.\n\nIssue(s): A large amount of Steal time typically indicates that your underlying infrastructure is not properly handling Virtual machines, if this number is larger than the number of CPU cores, you are overcommitting CPU\n\nSuggested action(s): Consider a different IAAS provider for GemFire to run more efficiently",
+              "noDefaultEvents": true,
+              "description": "For each Server member, this chart represents the rate of requests of put operations received per second on a specific member.",
               "anomalyType": "both"
             },
             {
@@ -2209,49 +2174,212 @@
               "base": 0,
               "chartAttributes": {
                 "dashboardLayout": {
-                  "x": 7,
+                  "x": 8,
                   "y": 12,
-                  "w": 5,
+                  "w": 4,
                   "h": 5
                 }
               },
               "sources": [
                 {
                   "name": "A",
-                  "query": "ts(geode.entriesOnlyOnDisk.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.entriesOnlyOnDisk.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "B",
-                  "query": "ts(geode.entriesInVM.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.entriesInVM.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "C",
-                  "query": "ts(geode.bytesOnlyOnDisk.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")-ts(geode.entriesInVM.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.bytesOnlyOnDisk.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")-ts(gemfire.entriesInVM.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\")",
+                  "disabled": true,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": true
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "D",
-                  "query": "sum(ts(geode.entriesOnlyOnDisk.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"/PdxTypes\" and instance!=\"/_ConfigurationRegion\"))-rawsum(ts(geode.entriesInVM.gauge, namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"/PdxTypes\" and instance!=\"/_ConfigurationRegion\"), instance)",
-                  "querybuilderEnabled": false,
+                  "query": "sum(ts(gemfire.entriesOnlyOnDisk.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"/PdxTypes\" and instance!=\"/_ConfigurationRegion\"))-rawsum(ts(gemfire.entriesInVM.gauge, namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\" and cluster=\"${cluster_name}\" and instance!=\"/PdxTypes\" and instance!=\"/_ConfigurationRegion\"), instance)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
-              "description": "For persistent regions that hold data in memory and on disk, we provide this chart to measure ensure that these values stay. http://www.google.com \n\nIssue(s): If entries on disk exceeds that of what is on the VM, the ability to recover from disk is at risk.\n\nAction(s): Scale up (increase memory available to servers) in order to prevent future recovery failures",
+              "description": "For persistent regions that hold data in memory and on disk, we provide this chart to measure ensure that these values stay.\n\nIssue(s): If entries on disk exceeds that of what is on the VM, the ability to recover from disk is at risk.\n\nAction(s): Scale up (increase memory available to servers) in order to prevent future recovery failures",
               "anomalyType": "both"
+            }
+          ],
+          "heightFactor": 100
+        },
+        {
+          "charts": [
+            {
+              "chartSettings": {
+                "y1ScaleSIBy1024": false,
+                "fixedLegendEnabled": false,
+                "fixedLegendFilterField": "CURRENT",
+                "y0ScaleSIBy1024": false,
+                "fixedLegendFilterLimit": 5,
+                "fixedLegendPosition": "RIGHT",
+                "customTags": [],
+                "lineType": "linear",
+                "windowing": "full",
+                "fixedLegendFilterSort": "TOP",
+                "y1Units": "",
+                "type": "line",
+                "y1UnitAutoscaling": false,
+                "tagMode": "all",
+                "fixedLegendUseRawStats": false,
+                "y0UnitAutoscaling": true,
+                "fixedLegendDisplayStats": [
+                  "CURRENT"
+                ],
+                "autoColumnTags": false,
+                "numTags": 4,
+                "defaultSortColumn": null,
+                "sparklineDisplayColor": null,
+                "sparklineLineColor": null,
+                "sparklineFillColor": null
+              },
+              "includeObsoleteMetrics": false,
+              "name": "Message Queue Size",
+              "units": "# of messages in queue",
+              "summarization": "LAST",
+              "base": 0,
+              "chartAttributes": {
+                "dashboardLayout": {
+                  "x": 0,
+                  "y": 17,
+                  "w": 4,
+                  "h": 5
+                }
+              },
+              "sources": [
+                {
+                  "name": "Message Queue",
+                  "query": "if(exists(ts(gemfire.messageQueueSize.gauge, ${cluster_filter})), ts(gemfire.messageQueueSize.gauge, ${cluster_filter}),0)",
+                  "disabled": false,
+                  "secondaryAxis": false,
+                  "querybuilderEnabled": false
+                }
+              ],
+              "noDefaultEvents": false,
+              "description": "The GemFire message queue represents the size of the Operations (get/put/destroy/etc.) subscription queue."
+            },
+            {
+              "chartSettings": {
+                "y1ScaleSIBy1024": false,
+                "fixedLegendEnabled": false,
+                "fixedLegendFilterField": "CURRENT",
+                "y0ScaleSIBy1024": false,
+                "fixedLegendFilterLimit": 5,
+                "fixedLegendPosition": "RIGHT",
+                "customTags": [],
+                "lineType": "linear",
+                "windowing": "full",
+                "fixedLegendFilterSort": "TOP",
+                "y1Units": "",
+                "type": "line",
+                "y1UnitAutoscaling": false,
+                "tagMode": "all",
+                "fixedLegendUseRawStats": false,
+                "y0UnitAutoscaling": false,
+                "fixedLegendDisplayStats": [
+                  "CURRENT"
+                ],
+                "autoColumnTags": false,
+                "numTags": 4,
+                "defaultSortColumn": null,
+                "sparklineDisplayColor": null,
+                "sparklineLineColor": null,
+                "sparklineFillColor": null
+              },
+              "includeObsoleteMetrics": false,
+              "name": "Client Query Rate",
+              "units": "queries per second",
+              "summarization": "LAST",
+              "base": 0,
+              "chartAttributes": {
+                "dashboardLayout": {
+                  "x": 4,
+                  "y": 17,
+                  "w": 4,
+                  "h": 5
+                }
+              },
+              "sources": [
+                {
+                  "name": "Query Requests Rate",
+                  "query": "rate(ts(gemfire.queryRequests.gauge, ${cluster_filter}))",
+                  "disabled": false,
+                  "secondaryAxis": false,
+                  "querybuilderEnabled": false
+                }
+              ],
+              "noDefaultEvents": false,
+              "description": "The GemFire query rate is the number of cache client operations query requests performed per second."
+            },
+            {
+              "chartSettings": {
+                "y1ScaleSIBy1024": false,
+                "fixedLegendEnabled": false,
+                "fixedLegendFilterField": "CURRENT",
+                "y0ScaleSIBy1024": false,
+                "fixedLegendFilterLimit": 5,
+                "fixedLegendPosition": "RIGHT",
+                "customTags": [],
+                "lineType": "linear",
+                "windowing": "full",
+                "fixedLegendFilterSort": "TOP",
+                "y1Units": "",
+                "type": "line",
+                "y1UnitAutoscaling": false,
+                "tagMode": "all",
+                "fixedLegendUseRawStats": false,
+                "y0UnitAutoscaling": true,
+                "fixedLegendDisplayStats": [
+                  "CURRENT"
+                ],
+                "autoColumnTags": false,
+                "numTags": 4,
+                "defaultSortColumn": null,
+                "sparklineDisplayColor": null,
+                "sparklineLineColor": null,
+                "sparklineFillColor": null
+              },
+              "includeObsoleteMetrics": false,
+              "name": "Avg. Query Time",
+              "units": "ns",
+              "base": 0,
+              "chartAttributes": {
+                "dashboardLayout": {
+                  "x": 8,
+                  "y": 17,
+                  "w": 4,
+                  "h": 5
+                }
+              },
+              "sources": [
+                {
+                  "name": "Avg. Query time",
+                  "query": "ts(gemfire.processQueryTime.gauge, ${cluster_filter})/ts(gemfire.queryRequests.gauge, ${cluster_filter})",
+                  "disabled": false,
+                  "secondaryAxis": false,
+                  "querybuilderEnabled": false
+                }
+              ],
+              "noDefaultEvents": false,
+              "description": "The average query time is computed by taking the total time of all query requests (processQueryTime) and dividing it by the number of requests (queryRequests), to get an average time spent on any given query."
             }
           ],
           "heightFactor": 100
@@ -2312,26 +2440,26 @@
                 {
                   "name": "Current",
                   "query": "if(exists(ts(kubernetes.statefulset.current_replicas, cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\" and statefulset=\"${gemfire_cluster}*\")), ts(kubernetes.statefulset.current_replicas, cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\" and statefulset=\"${gemfire_cluster}*\"),0)",
-                  "querybuilderEnabled": false,
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "Desired",
                   "query": "if(exists(ts(kubernetes.statefulset.desired_replicas, cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\" and statefulset=\"${gemfire_cluster}*\")),ts(kubernetes.statefulset.desired_replicas, cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\" and statefulset=\"${gemfire_cluster}*\"),0)",
-                  "querybuilderEnabled": false,
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "Ready",
                   "query": "if(exists(ts(kubernetes.statefulset.ready_replicas, cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\" and statefulset=\"${gemfire_cluster}*\")), ts(kubernetes.statefulset.ready_replicas, cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\" and statefulset=\"${gemfire_cluster}*\"),0)",
-                  "querybuilderEnabled": false,
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -2386,19 +2514,19 @@
               "sources": [
                 {
                   "name": "TX Error Rates",
-                  "query": "if(exists(ts(kubernetes.pod.network.tx_errors_rate, label.geode-cluster=\"${gemfire_cluster}\"and cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\")), ts(kubernetes.pod.network.tx_errors_rate, label.geode-cluster=\"${gemfire_cluster}\"and cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\"),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(ts(kubernetes.pod.network.tx_errors_rate, label.gemfire-cluster=\"${gemfire_cluster}\"and cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\")), ts(kubernetes.pod.network.tx_errors_rate, label.gemfire-cluster=\"${gemfire_cluster}\"and cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\"),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 },
                 {
                   "name": "RX Error Rates",
-                  "query": "if(exists(ts(kubernetes.pod.network.rx_errors_rate, label.geode-cluster=\"${gemfire_cluster}\"and cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\")), ts(kubernetes.pod.network.rx_errors_rate, label.geode-cluster=\"${gemfire_cluster}\"and cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\"),0)",
-                  "querybuilderEnabled": false,
+                  "query": "if(exists(ts(kubernetes.pod.network.rx_errors_rate, label.gemfire-cluster=\"${gemfire_cluster}\"and cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\")), ts(kubernetes.pod.network.rx_errors_rate, label.gemfire-cluster=\"${gemfire_cluster}\"and cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\"),0)",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "sourceDescription": "",
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -2416,7 +2544,7 @@
       "tagsBlackListRegex": "",
       "parameterType": "DYNAMIC",
       "tagKey": "namespace",
-      "queryValue": "ts(geode.broadcastMessages.gauge, cluster=\"${cluster_name}\")",
+      "queryValue": "ts(gemfire.broadcastMessages.gauge, cluster=\"${cluster_name}\")",
       "order": 2,
       "defaultValue": "Label",
       "hideFromView": false,
@@ -2433,7 +2561,7 @@
       "tagsBlackListRegex": "",
       "parameterType": "DYNAMIC",
       "tagKey": "cluster",
-      "queryValue": "ts(geode.nodes.gauge)",
+      "queryValue": "ts(gemfire.nodes.gauge)",
       "order": 1,
       "defaultValue": "Label",
       "hideFromView": false,
@@ -2441,8 +2569,7 @@
       "label": "Kubernetes Cluster",
       "dynamicFieldType": "TAG_KEY",
       "valuesToReadableStrings": {
-        "Label": "gemfire-lrt",
-        "Label_2": "gemfire-nimba-test"
+        "Label": "gemfire-lrt"
       },
       "allowAll": false,
       "selectedLabel": "Label"
@@ -2452,25 +2579,25 @@
       "order": 4,
       "defaultValue": "Label",
       "hideFromView": true,
-      "value": " namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and label.geode-cluster=\"${gemfire_cluster}\" ",
+      "value": " namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and label.gemfire-cluster=\"${gemfire_cluster}\" ",
       "label": "cluster_filter",
       "valuesToReadableStrings": {
-        "Label": " namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and label.geode-cluster=\"${gemfire_cluster}\" "
+        "Label": " namespace=\"${namespace}\" and cluster=\"${cluster_name}\" and label.gemfire-cluster=\"${gemfire_cluster}\" "
       }
     },
     "gemfire_cluster": {
       "tagsBlackListRegex": "",
       "parameterType": "DYNAMIC",
-      "tagKey": "label.geode-cluster",
-      "queryValue": "ts(geode.nodes.gauge, namespace=\"${namespace}\" and cluster=\"${cluster_name}\")",
+      "tagKey": "label.gemfire-cluster",
+      "queryValue": "ts(gemfire.nodes.gauge, namespace=\"${namespace}\" and cluster=\"${cluster_name}\")",
       "order": 3,
       "defaultValue": "Label",
       "hideFromView": false,
-      "value": "geodecluster-sample",
+      "value": "lrt-cluster",
       "label": "GemFire Cluster",
       "dynamicFieldType": "TAG_KEY",
       "valuesToReadableStrings": {
-        "Label": "geodecluster-sample"
+        "Label": "lrt-cluster"
       },
       "allowAll": false,
       "selectedLabel": "Label"
