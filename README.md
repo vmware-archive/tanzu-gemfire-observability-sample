@@ -30,4 +30,4 @@ signed as described on that page. Your signature certifies that you wrote the pa
 as an open-source patch. For more detailed information, refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
-The code in this repository is licensed with the [MIT license](/license.txt).
+The code in this repository is licensed with the [MIT license](/LICENSE.txt).
