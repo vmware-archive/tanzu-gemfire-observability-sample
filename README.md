@@ -1,26 +1,26 @@
 
 # tanzu-gemfire-observability-sample
 
+### Tanzu Prerequisites
+* VMware Tanzu™ GemFire for Kubernetes  
+* VMware Tanzu Observability by Wavefront
+
 ## Overview
+These dashboards are for the [Gemfire](https://gemfire.docs.pivotal.io/910/gemfire/about_gemfire.html) integration on [Tanzu Observability by Wavefront](https://tanzu.vmware.com/observability), included as part of the beta2 release of [Gemfire for Kubernetes](http://tgf.docs.pivotal.io/tgf/beta-2).
 
 ## Try it out
-Create a new dashboard on Wavefront, and edit its json with the contents of your chosen dashboard (either [developer.json](/dashboards/developer.json) or [operator.json](/dashboards/operator.json))
-You may follow this guide by Wavefront to [edit and save a dashboard](https://docs.wavefront.com/ui_dashboards_v1.html#edit-and-save-a-dashboard). 
-
-
-### Prerequisites
-
-* A Wavefront cluster e.g. `<your-company>.wavefront.com`, with corresponding API key
-* Wavefront Collectors + Proxy installed to your cluster
-* Gemfire-for-kubernetes
+To try out one of these dashboards, create your own dashboard on Tanzu Observability and replace the json contents with your chosen [dashboard](/dashboards) as described in [this](https://docs.wavefront.com/ui_dashboards_v1.html#edit-and-save-a-dashboard) guide. 
 
 ### Build & Run
 
-1. Step 1
-2. Step 2
-3. Step 3
+#### Tanzu Gemfire for Kubernetes
+1. [Install](https://tgf.docs.pivotal.io/tgf/beta-2/install) Tanzu Gemfire for Kubernetes.
+2. [Create](http://tgf.docs.pivotal.io/tgf/beta-2/create-and-delete.html) a Gemfire cluster.
+3. [Install](http://tgf.docs.pivotal.io/tgf/beta-2/work-with-cluster.html#collect-metrics) Wavefront components.
+4. Your metrics should propogate to your dashboard within a few minutes.
 
-## Documentation
+#### Standalone Tanzu Gemfire
+When not using kubernetes, Gemfire and Wavefront configuration requires a different set of steps. These will be added soon.
 
 ## Contributing
 
