@@ -14,11 +14,11 @@ These dashboards are for the [Gemfire](https://gemfire.docs.pivotal.io/910/gemfi
 1. [Install](https://tgf.docs.pivotal.io/tgf/beta-2/install) Tanzu Gemfire for Kubernetes.
 2. [Create](http://tgf.docs.pivotal.io/tgf/beta-2/create-and-delete.html) a Gemfire cluster.
 3. [Install](http://tgf.docs.pivotal.io/tgf/beta-2/work-with-cluster.html#collect-metrics) Wavefront components.
-4. Use one of our [starter dashboards](/dashboards) to [create and edit](https://docs.wavefront.com/ui_dashboards_v1.html#edit-and-save-a-dashboard) your own.
+4. Use one of our starter [dashboards](/dashboards) to [create and edit](https://docs.wavefront.com/ui_dashboards_v1.html#edit-and-save-a-dashboard) your own.
 5. Your metrics should propagate to your dashboard within a few minutes!
 
 ### Standalone Tanzu Gemfire
-Steps to use Wavefront with Gemfire standalone will be added soon.
+In-progress.
 
 ## Contributing
 The tanzu-gemfire-observability-sample project team welcomes contributions from the community. Before you start working with tanzu-gemfire-observability-sample, please
