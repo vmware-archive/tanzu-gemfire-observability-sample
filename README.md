@@ -17,11 +17,10 @@ These dashboards are for the [Gemfire](https://gemfire.docs.pivotal.io/910/gemfi
 4. Use one of our [starter dashboards](/dashboards) to [create and edit](https://docs.wavefront.com/ui_dashboards_v1.html#edit-and-save-a-dashboard) your own.
 5. Your metrics should propagate to your dashboard within a few minutes!
 
-#### Standalone Tanzu Gemfire
-When not using kubernetes, Gemfire and Wavefront configuration requires a different set of steps. These will be added soon.
+### Standalone Tanzu Gemfire
+Steps to use Wavefront with Gemfire standalone will be added soon.
 
 ## Contributing
-
 The tanzu-gemfire-observability-sample project team welcomes contributions from the community. Before you start working with tanzu-gemfire-observability-sample, please
 read our [Developer Certificate of Origin](https://cla.vmware.com/dco). All contributions to this repository must be
 signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on
