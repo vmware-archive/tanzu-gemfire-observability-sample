@@ -2565,11 +2565,11 @@
       "order": 1,
       "defaultValue": "Label",
       "hideFromView": false,
-      "value": "gemfire-lrt",
+      "value": "*",
       "label": "Kubernetes Cluster",
       "dynamicFieldType": "TAG_KEY",
       "valuesToReadableStrings": {
-        "Label": "gemfire-lrt"
+        "Label": "*"
       },
       "allowAll": false,
       "selectedLabel": "Label"
@@ -2593,11 +2593,11 @@
       "order": 3,
       "defaultValue": "Label",
       "hideFromView": false,
-      "value": "lrt-cluster",
+      "value": "*",
       "label": "GemFire Cluster",
       "dynamicFieldType": "TAG_KEY",
       "valuesToReadableStrings": {
-        "Label": "lrt-cluster"
+        "Label": "*"
       },
       "allowAll": false,
       "selectedLabel": "Label"

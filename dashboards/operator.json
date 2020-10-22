@@ -706,9 +706,7 @@
       "label": "Kubernetes Namespace",
       "dynamicFieldType": "TAG_KEY",
       "valuesToReadableStrings": {
-        "Label": "*",
-        "Label_2": "default",
-        "Label_3": "geode-system"
+        "Label": "*"
       },
       "allowAll": true,
       "selectedLabel": "Label"
@@ -725,9 +723,7 @@
       "label": "Kubernetes Cluster",
       "dynamicFieldType": "TAG_KEY",
       "valuesToReadableStrings": {
-        "Label": "*",
-        "Label_2": "gemfire-lrt",
-        "Label_3": "gemfire-nimba-test"
+        "Label": "*"
       },
       "allowAll": true,
       "selectedLabel": "Label"
@@ -754,8 +750,7 @@
       "label": "gemfire_cluster",
       "dynamicFieldType": "TAG_KEY",
       "valuesToReadableStrings": {
-        "Label": "*",
-        "Label_2": "geodecluster-sample"
+        "Label": "*"
       },
       "allowAll": true,
       "selectedLabel": "Label"
