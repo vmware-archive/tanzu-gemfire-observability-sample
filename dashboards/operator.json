@@ -67,10 +67,10 @@
               "chartAttributes": {
                 "dashboardLinks": {
                   "*": {
-                    "destination": "/dashboards/GemFire-Developer-Dashboard-1-2",
+                    "destination": "/dashboards/integration-gemfire-developer-dashboard",
                     "tags": {
                       "cluster_name": "cluster",
-                      "gemfire_cluster": "label.geode-cluster",
+                      "gemfire_cluster": "label.gemfire-cluster",
                       "namespace": "namespace"
                     }
                   }
@@ -80,7 +80,7 @@
                   "labelBy": [
                     "cluster",
                     "namespace",
-                    "label.geode-cluster",
+                    "label.gemfire-cluster",
                     "member",
                     "id"
                   ],
@@ -114,10 +114,11 @@
               "sources": [
                 {
                   "name": "Servers",
-                  "query": "ts(geode.usedMemory.gauge, instance=vmHeapMemoryStats and ${cluster_filter})/ts(geode.maxMemory.gauge, instance=vmHeapMemoryStats and ${cluster_filter})*100",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.usedMemory.gauge, instance=vmHeapMemoryStats and ${cluster_filter})/ts(gemfire.maxMemory.gauge, instance=vmHeapMemoryStats and ${cluster_filter})*100",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "disabled": false
+                  "querybuilderEnabled": false,
+                  "sourceDescription": ""
                 }
               ],
               "noDefaultEvents": false,
@@ -178,10 +179,10 @@
               "chartAttributes": {
                 "dashboardLinks": {
                   "*": {
-                    "destination": "/dashboards/GemFire-Developer-Dashboard-1-2",
+                    "destination": "/dashboards/integration-gemfire-developer-dashboard",
                     "tags": {
                       "cluster_name": "cluster",
-                      "gemfire_cluster": "label.geode-cluster",
+                      "gemfire_cluster": "label.gemfire-cluster",
                       "namespace": "namespace"
                     }
                   }
@@ -191,7 +192,7 @@
                   "labelBy": [
                     "cluster",
                     "namespace",
-                    "label.geode-cluster",
+                    "label.gemfire-cluster",
                     "member"
                   ],
                   "labelHeader": "GemFire Member",
@@ -224,10 +225,10 @@
               "sources": [
                 {
                   "name": "CPU Active",
-                  "query": "ts(geode.cpuActive.gauge, ${cluster_filter})",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.cpuActive.gauge, ${cluster_filter})",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "disabled": false
+                  "querybuilderEnabled": false
                 }
               ],
               "noDefaultEvents": false,
@@ -294,10 +295,10 @@
               "chartAttributes": {
                 "dashboardLinks": {
                   "*": {
-                    "destination": "/dashboards/GemFire-Developer-Dashboard-1-2",
+                    "destination": "/dashboards/integration-gemfire-developer-dashboard",
                     "tags": {
                       "cluster_name": "cluster",
-                      "gemfire_cluster": "label.geode-cluster",
+                      "gemfire_cluster": "label.gemfire-cluster",
                       "namespace": "namespace"
                     }
                   }
@@ -307,7 +308,7 @@
                   "labelBy": [
                     "cluster",
                     "namespace",
-                    "label.geode-cluster",
+                    "label.gemfire-cluster",
                     "member"
                   ],
                   "labelHeader": "GemFire Member",
@@ -340,10 +341,10 @@
               "sources": [
                 {
                   "name": "Utilized",
-                  "query": "(1 - ts(geode.volumeFreeSpace.gauge, ${cluster_filter}) / ts(geode.volumeSize.gauge, ${cluster_filter}) )*100",
-                  "querybuilderEnabled": false,
+                  "query": "(1 - ts(gemfire.volumeFreeSpace.gauge, ${cluster_filter}) / ts(gemfire.volumeSize.gauge, ${cluster_filter}) )*100",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "disabled": false
+                  "querybuilderEnabled": false
                 }
               ],
               "noDefaultEvents": false,
@@ -408,10 +409,10 @@
               "chartAttributes": {
                 "dashboardLinks": {
                   "*": {
-                    "destination": "/dashboards/GemFire-Developer-Dashboard-1-2",
+                    "destination": "/dashboards/integration-gemfire-developer-dashboard",
                     "tags": {
                       "cluster_name": "cluster",
-                      "gemfire_cluster": "label.geode-cluster",
+                      "gemfire_cluster": "label.gemfire-cluster",
                       "namespace": "namespace"
                     }
                   }
@@ -421,12 +422,12 @@
                   "labelBy": [
                     "cluster",
                     "namespace_name",
-                    "label.geode-cluster",
+                    "label.gemfire-cluster",
                     "pod_name",
                     "source"
                   ],
                   "labelHeader": "Pod",
-                  "valueHeader": "TX/RX Rate"
+                  "valueHeader": "Rate"
                 },
                 "colorMap": {
                   "colors": [],
@@ -448,17 +449,17 @@
               "sources": [
                 {
                   "name": "TX",
-                  "query": "aliasSource(ts(kubernetes.pod.network.tx_rate, cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\"), \"TX Rate\")",
-                  "querybuilderEnabled": false,
+                  "query": "aliasSource(ts(kubernetes.pod.network.tx_rate, cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\"), \"TX Rate\")",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "disabled": false
+                  "querybuilderEnabled": false
                 },
                 {
                   "name": "RX",
-                  "query": "aliasSource(ts(kubernetes.pod.network.rx_rate, cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\"), \"RX Rate\")",
-                  "querybuilderEnabled": false,
+                  "query": "aliasSource(ts(kubernetes.pod.network.rx_rate, cluster=\"${cluster_name}\" and namespace_name=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\"), \"RX Rate\")",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "disabled": false
+                  "querybuilderEnabled": false
                 }
               ],
               "noDefaultEvents": false,
@@ -512,16 +513,16 @@
               "filterOutNonAnomalies": false,
               "name": "GemFire Network Utilization",
               "anomalySampleSize": "8",
-              "units": "KiB",
+              "units": "B",
               "summarization": "LAST",
               "base": 0,
               "chartAttributes": {
                 "dashboardLinks": {
                   "*": {
-                    "destination": "/dashboards/GemFire-Developer-Dashboard-1-2",
+                    "destination": "/dashboards/integration-gemfire-developer-dashboard",
                     "tags": {
                       "cluster_name": "cluster",
-                      "gemfire_cluster": "label.geode-cluster",
+                      "gemfire_cluster": "label.gemfire-cluster",
                       "namespace": "namespace"
                     }
                   }
@@ -531,13 +532,14 @@
                   "labelBy": [
                     "cluster",
                     "namespace",
-                    "label.geode-cluster",
-                    "member",
+                    "label.gemfire-cluster",
                     "namespace_name",
-                    "pod_name"
+                    "pod_name",
+                    "member",
+                    "source"
                   ],
                   "labelHeader": "Pod",
-                  "valueHeader": "TX Rate"
+                  "valueHeader": "Rate"
                 },
                 "colorMap": {
                   "colors": [],
@@ -558,18 +560,18 @@
               },
               "sources": [
                 {
-                  "name": "TX",
-                  "query": "ts(geode.recvBytes.gauge, ${cluster_filter})",
-                  "querybuilderEnabled": false,
+                  "name": "RX",
+                  "query": "aliasSource(ts(gemfire.recvBytes.gauge, ${cluster_filter}), \"RX Rate\")",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "disabled": false
+                  "querybuilderEnabled": false
                 },
                 {
-                  "name": "RX",
-                  "query": "ts(geode.xmitBytes.gauge, ${cluster_filter})",
-                  "querybuilderEnabled": false,
+                  "name": "TX",
+                  "query": "aliasSource(ts(gemfire.xmitBytes.gauge, ${cluster_filter}), \"TX Rate\")",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "disabled": false
+                  "querybuilderEnabled": false
                 }
               ],
               "noDefaultEvents": false,
@@ -631,10 +633,10 @@
               "chartAttributes": {
                 "dashboardLinks": {
                   "*": {
-                    "destination": "/dashboards/GemFire-Developer-Dashboard-1-2",
+                    "destination": "/dashboards/integration-gemfire-developer-dashboard",
                     "tags": {
                       "cluster_name": "cluster",
-                      "gemfire_cluster": "label.geode-cluster",
+                      "gemfire_cluster": "label.gemfire-cluster",
                       "namespace": "namespace"
                     }
                   }
@@ -644,7 +646,7 @@
                   "labelBy": [
                     "cluster",
                     "namespace",
-                    "label.geode-cluster",
+                    "label.gemfire-cluster",
                     "member"
                   ],
                   "labelHeader": "GemFire Member",
@@ -677,10 +679,10 @@
               "sources": [
                 {
                   "name": "Utilized",
-                  "query": "ts(geode.functionExecutionsCompleted.gauge, member!=\"*locator*\" and instance!=\"*internal*\" and instance!=\"distributionStats\" and ${cluster_filter})/ts(geode.functionExecutionCalls.gauge, member!=\"*locator*\" and instance!=\"*internal*\" and instance!=\"distributionStats\" and ${cluster_filter})*100",
-                  "querybuilderEnabled": false,
+                  "query": "ts(gemfire.functionExecutionsCompleted.gauge, member!=\"*locator*\" and instance!=\"*internal*\" and instance!=\"distributionStats\" and ${cluster_filter})/ts(gemfire.functionExecutionCalls.gauge, member!=\"*locator*\" and instance!=\"*internal*\" and instance!=\"distributionStats\" and ${cluster_filter})*100",
+                  "disabled": false,
                   "secondaryAxis": false,
-                  "disabled": false
+                  "querybuilderEnabled": false
                 }
               ],
               "noDefaultEvents": false,
@@ -698,7 +700,7 @@
       "tagsBlackListRegex": "",
       "parameterType": "DYNAMIC",
       "tagKey": "namespace",
-      "queryValue": "ts(geode.broadcastMessages.gauge, cluster=\"${cluster_name}\")",
+      "queryValue": "ts(gemfire.broadcastMessages.gauge, cluster=\"${cluster_name}\")",
       "order": 2,
       "defaultValue": "Label",
       "hideFromView": false,
@@ -715,7 +717,7 @@
       "tagsBlackListRegex": "",
       "parameterType": "DYNAMIC",
       "tagKey": "cluster",
-      "queryValue": "ts(geode.broadcastMessages.gauge, cluster?=\"*\")",
+      "queryValue": "ts(gemfire.broadcastMessages.gauge, cluster?=\"*\")",
       "order": 1,
       "defaultValue": "Label",
       "hideFromView": false,
@@ -733,21 +735,22 @@
       "order": 4,
       "defaultValue": "Label",
       "hideFromView": true,
+      "value": "cluster=\"${cluster_name}\" and namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\"",
       "label": "cluster_filter",
       "valuesToReadableStrings": {
-        "Label": "cluster=\"${cluster_name}\" and namespace=\"${namespace}\" and label.geode-cluster=\"${gemfire_cluster}\""
+        "Label": "cluster=\"${cluster_name}\" and namespace=\"${namespace}\" and label.gemfire-cluster=\"${gemfire_cluster}\""
       }
     },
     "gemfire_cluster": {
       "tagsBlackListRegex": "",
       "parameterType": "DYNAMIC",
-      "tagKey": "label.geode-cluster",
-      "queryValue": "ts(geode.broadcastMessages*,namespace=\"${namespace}\" and cluster=\"${cluster_name}\")",
+      "tagKey": "label.gemfire-cluster",
+      "queryValue": "ts(gemfire.broadcastMessages*,namespace=\"${namespace}\" and cluster=\"${cluster_name}\")",
       "order": 3,
       "defaultValue": "Label",
       "hideFromView": false,
       "value": "*",
-      "label": "gemfire_cluster",
+      "label": "GemFire Cluster",
       "dynamicFieldType": "TAG_KEY",
       "valuesToReadableStrings": {
         "Label": "*"
