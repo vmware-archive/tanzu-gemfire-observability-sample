@@ -1,21 +1,27 @@
 
 # tanzu-gemfire-observability-sample
 
-## Tanzu Prerequisites
-* VMware Tanzu™ GemFire for Kubernetes  
-* VMware Tanzu™ Observability by Wavefront
-
 ## Overview
-These dashboards are for the [Gemfire](https://gemfire.docs.pivotal.io/910/gemfire/about_gemfire.html) integration on [Tanzu Observability by Wavefront](https://tanzu.vmware.com/observability), included as part of the beta2 release of [Gemfire for Kubernetes](http://tgf.docs.pivotal.io/tgf/beta-2).
 
-## Build & Run
+This repository contains example dashboards for
+[Tanzu Observability by Wavefront](https://tanzu.vmware.com/observability)
+as integrated with the beta2 release of
+[Tanzu GemFire for Kubernetes](http://tgf.docs.pivotal.io/tgf/beta-2).
+The dashboards give insight into the operation of
+Tanzu GemFire clusters.
 
-### Tanzu Gemfire for Kubernetes
-1. [Install](https://tgf.docs.pivotal.io/tgf/beta-2/install) Tanzu Gemfire for Kubernetes.
-2. [Create](http://tgf.docs.pivotal.io/tgf/beta-2/create-and-delete.html) a Gemfire cluster.
-3. [Install](http://tgf.docs.pivotal.io/tgf/beta-2/work-with-cluster.html#collect-metrics) Wavefront components.
-4. Use one of our starter [dashboards](/dashboards) to create and [edit](https://docs.wavefront.com/ui_dashboards_v1.html#edit-and-save-a-dashboard) your own.
-5. Your metrics should propagate to your dashboard within a few minutes.
+## Instantiate a Dashboard
+
+Follow the directions at
+[Collect and View Metrics](https://tgf.docs.pivotal.io/tgf/beta-2/work-with-cluster.html#collect-metrics)
+to install a Wavefront Collector and Proxy
+and to create a Tanzu GemFire cluster.
+
+Follow the instructions at [Create and Customize Dashboards](https://docs.wavefront.com/ui_dashboards.html) to first create a dashboard,
+and then edit the dashboard to add the content from one of the samples
+in the `dashboards` directory.
+
+Your metrics should propagate to your saved dashboard within a few minutes.
 
 ## Contributing
 The tanzu-gemfire-observability-sample project team welcomes contributions from the community. Before you start working with tanzu-gemfire-observability-sample, please
