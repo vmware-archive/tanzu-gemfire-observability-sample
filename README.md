@@ -5,19 +5,19 @@
 
 This repository contains example dashboards for
 [Tanzu Observability by Wavefront](https://tanzu.vmware.com/observability)
-as integrated with the beta2 release of
+as integrated with the Beta 2 release of
 [Tanzu GemFire for Kubernetes](http://tgf.docs.pivotal.io/tgf/beta-2).
 The dashboards give insight into the operation of
 Tanzu GemFire clusters.
 
 ## Instantiate a Dashboard
 
-Follow the directions at
+Follow the instructions at
 [Collect and View Metrics](https://tgf.docs.pivotal.io/tgf/beta-2/work-with-cluster.html#collect-metrics)
 to install a Wavefront Collector and Proxy
 and to create a Tanzu GemFire cluster.
 
-Follow the instructions at [Create and Customize Dashboards](https://docs.wavefront.com/ui_dashboards.html) to first create a dashboard,
+Follow the instructions at [Create and Customize Dashboards](https://docs.wavefront.com/ui_dashboards.html) to create a dashboard,
 and then edit the dashboard to add the content from one of the samples
 in the `dashboards` directory.
 
