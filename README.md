@@ -18,7 +18,7 @@ to install a Wavefront Collector and Proxy
 and to create a Tanzu GemFire cluster.
 
 Follow the instructions at [Create and Customize Dashboards](https://docs.wavefront.com/ui_dashboards.html) to create a dashboard,
-and then edit the dashboard to add the content from one of the samples
+and then [Edit the Dashboard JSON](https://docs.wavefront.com/ui_dashboards.html#edit-the-dashboard-json) to add the content from one of the samples
 in the `dashboards` directory.
 
 Your metrics should propagate to your saved dashboard within a few minutes.
