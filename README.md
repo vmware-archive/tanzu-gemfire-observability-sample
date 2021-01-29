@@ -1,6 +1,13 @@
 
 # tanzu-gemfire-observability-sample
 
+# Deprecation Notice:
+
+This sample project is deprecated.
+
+For the most current information on GemFire Dashboards, please visit the documentation on [VMware Tanzu™ GemFire® Integration](https://docs.wavefront.com/gemfire.html)
+
+
 ## Overview
 
 This repository contains example dashboards for
