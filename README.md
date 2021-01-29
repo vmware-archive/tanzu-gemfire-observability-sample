@@ -1,12 +1,14 @@
-# Deprecation Notice:
+# tanzu-gemfire-observability-sample
+
 
 ```diff
 ! This sample project is deprecated.
 ```
+
+## Deprecation Notice:
+
 For the most current information, please visit VMware Tanzu Observability™'s [GemFire® Integration](https://docs.wavefront.com/gemfire.html).
 
-
-# tanzu-gemfire-observability-sample
 
 
 ## Overview
