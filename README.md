@@ -5,7 +5,7 @@
 
 This sample project is deprecated.
 
-For the most current information on GemFire Dashboards, please visit the documentation on [VMware Tanzu™ GemFire® Integration](https://docs.wavefront.com/gemfire.html)
+For the most current information, please visit VMware Tanzu Observability™'s [GemFire® Integration](https://docs.wavefront.com/gemfire.html).
 
 
 ## Overview
