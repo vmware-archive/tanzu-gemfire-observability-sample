@@ -5,9 +5,10 @@
 ## Version Synchornization Notice:
 
 ```diff
-! This sample project may be slightly out of sync with the integration provided by VMware Tanzu Observability™.
+! This repo may be out of sync with dashboards provided by the GemFire integration.
 ```
-For the most current information, please visit VMware Tanzu Observability™'s [GemFire® Integration](https://docs.wavefront.com/gemfire.html).
+As shown below, the GemFire integration provided within VMware Tanzu Observability™ is the recommended way to create a dashboard.
+![gemfire integration](gemfire-integration.png?raw=true "Security analysis of Tanzu-Gemfire-for-Kubernetes's Metrics")
 
 
 ## Overview
